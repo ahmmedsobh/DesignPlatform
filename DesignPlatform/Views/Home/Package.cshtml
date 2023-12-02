@@ -1,0 +1,45 @@
+﻿@model DesignPlatform.ViewModels.CustomerHomeViewModels.CustomerHomePackageViewModel
+@{
+    Layout = "_AuthLayout";
+}
+
+<!-- Start Overlay    -->
+<div class="package-overlay">
+    <img src="@Model.Image">
+</div>
+<!-- End Overlay    -->
+
+<partial name="PlaceOrder" model="@Model.PlaceOrder" />
+
+
+@section Scripts {
+
+    <script>
+
+        $(document).on("change", ".area", function (e) {
+
+            if (this.value == "Back Yard") {
+
+                $(".back-yard").show();
+                $(".front-yard").hide();
+                $(".front-back-yard").hide();
+            }
+            else if (this.value == "Front Yard") {
+                $(".back-yard").hide();
+                $(".front-yard").show();
+                $(".front-back-yard").hide();
+            }
+            else if (this.value == "Front & Back Yard") {
+                $(".back-yard").hide();
+                $(".front-yard").hide();
+                $(".front-back-yard").show();
+            }
+
+        });
+
+
+    </script>
+
+
+
+}

@@ -1,0 +1,18 @@
+﻿@model DesignPlatform.ViewModels.CustomerViewModels.AppointmentViewModel
+
+@{
+    Layout = "_CustomerLayout";
+}
+<div class="appointment-added pt-5 pb-5">
+    <div class="container">
+        <h4>Thank you for scheduling your appointment.</h4>
+            <p class="gray-color">Your design consultant will be calling you <span class="second-color">@Model.Date.ToLongDateString() at @Model.Date.ToShortTimeString() AEST</span></p>
+
+            <p class="fw-bold">Please make sure pictures and / or videos of your yard area inside your customer portal your design consultation call.</p>
+
+            <p class="gray-color">this will allow your designer to study your yard and give you the best feedback and suggestions as possible. </p>
+
+             <a href="/Customer/Dashboard" class="btn section-btn">Go To My Customer Portal</a>
+    </div>
+
+</div>

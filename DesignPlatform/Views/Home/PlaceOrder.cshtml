@@ -1,0 +1,99 @@
+﻿@model DesignPlatform.ViewModels.CustomerHomeViewModels.PlaceOrderViewModel
+
+
+
+<div class="modal" tabindex="-1" id="select-package-modal" data-bs-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-controller="Home" asp-action="PlaceOrder">
+                <div class="modal-header">
+                    <h5 class="modal-title">@Model.PackageName</h5>
+                    <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
+                </div>
+                <div class="modal-body">
+
+                    <h6 class="text-center">Select Area You want Designed</h6>
+                    <div>
+                        <input asp-for="Area" value="Back Yard" class="area" checked type="radio"> Back Yard
+                    </div>
+                    <div>
+                        <input asp-for="Area" value="Front Yard" class="area" type="radio"> Front Yard
+                    </div>
+                    <div>
+                        <input asp-for="Area" value="Front & Back Yard" class="area" type="radio"> Front & Back Yard
+                    </div>
+                    <div class="img">
+                        <img src="@Model.PackageImage">
+                    </div>
+
+                    <div class="back-yard">
+                        <div class="price ">
+                            <span>Price</span>
+                            <span>@Model.BackYardPrice</span>
+                        </div>
+                    </div>
+                    
+
+                    <div class="front-yard">
+                        <div class="price">
+                            <span>Price</span>
+                            <span>@Model.FrontYardPrice</span>
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="front-back-yard">
+                        <div class="price ">
+                            <span>Price</span>
+                            <span>@Model.FrontBackYardPrice</span>
+                        </div>
+                    </div>
+                   
+
+                    
+                    <input asp-for="PackageId" value="@Model.PackageId" type="hidden" />
+                    
+
+                    <div>
+                        <input asp-for="FirstName" class="form-control" placeholder="First Name"/>
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <input asp-for="LastName" class="form-control" placeholder="Last Name" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <input asp-for="Email" class="form-control" placeholder="Email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <input asp-for="Phone" class="form-control" placeholder="Phone Number" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <input asp-for="StreetAddress" class="form-control" placeholder="Street Address" />
+                        <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <input asp-for="ZipCode" class="form-control" placeholder="Zip Code" />
+                        <span asp-validation-for="ZipCode" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn main-btn">Place Order</button>
+                    </div>
+
+                </div>
+               @* <div class="modal-footer">
+                    <button type="button" class="btn main-btn">Select</button>
+                </div>*@
+            </form>
+        </div>
+    </div>
+</div>

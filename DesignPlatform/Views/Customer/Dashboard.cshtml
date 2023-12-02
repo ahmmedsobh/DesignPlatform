@@ -1,0 +1,41 @@
+﻿@model IEnumerable<DesignPlatform.ViewModels.CustomerViewModels.CustomerDashboardViewModel>
+
+@{
+    Layout = "_CustomerLayout";
+}
+
+<div class="customer-dashboard pt-5 pb-5">
+    <div class="container">
+        <h4 class="text-center mt-3 mb-3">Your Projects</h4>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+
+            @{
+                var index = 1;
+            }
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>Project @index</td>
+                    <td>@item.Date</td>
+                    <td>@item.Time</td>
+                    <td>@item.Status</td>
+                    <td class="d-flex justify-content-center">
+                        <a href="/Customer/Index/@item.Id" class="btn section-btn">Show details</a>
+                    </td>
+                </tr>
+
+                index = index + 1;
+            }
+
+            
+        </table>
+    </div>
+</div>

@@ -1,0 +1,277 @@
+﻿@model DesignPlatform.ViewModels.CustomerViewModels.ProjectDetailsViewModel
+
+@{
+    Layout = "_CustomerLayout";
+}
+
+<!-- Start dashboard -->
+<div class="user-dashboard">
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-lg-9">
+                <form asp-controller="Customer" asp-action="Index" enctype="multipart/form-data">
+
+                    <input asp-for="Id" type="hidden" />
+
+                    <h6>Hi Ahmed</h6>
+                    <hr>
+
+                    <p>
+                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa culpa repudiandae neque ea assumenda voluptas enim mollitia vero,
+                        <a class="black-color" href="#"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, ex. Enim laboriosam nostrum asperiores delectus quibusdam ipsam excepturi vero corrupti perferendis fugiat, possimus odit doloribus, id incidunt aperiam, nisi quidem.</a> dolorum, accusantium alias non corporis at rem rerum natus quidem quam aliquam! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Itaque corporis ea iste expedita, fugit repellendus temporibus unde beatae libero consequuntur earum omnis cum dolorem excepturi non hic consectetur, ipsum voluptatibus!
+                    </p>
+
+                   
+                    <h6>Videos/Images</h6>
+                    <hr>
+
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. <span class="fw-bold black-color">Images</span> Dolores, cum ipsum? Nostrum quam possimus voluptatem. Necessitatibus esse, blanditiis commodi nobis impedit iure <span class="fw-bold black-color">Short video</span> adipisci odit obcaecati ipsum ad, nisi libero voluptatum! <a class="second-color" href="#">(Click here to see a video example)</a></p>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi hic quos voluptate vel magni minima adipisci nulla dolorum enim sequi voluptatem quibusdam, non soluta perferendis nihil quas ab mollitia error! (<a class="second-color" href="#">Click here to see example images</a>)</p>
+                    <p> <span class="fw-bold black-color">Tip</span> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Error fugiat molestiae ut libero ad quia distinctio consequuntur cumque, temporibus voluptate at harum soluta officiis quas sed itaque numquam quis. Id. </p>
+
+                    <div class="images">
+
+                        <label class="upload-btn">
+                            <i class="fa-solid fa-plus upload-icon"></i>
+                            Upload
+                            <input asp-for="Images" multiple type="file" class="upload-img-file upload-img1-file">
+                        </label>
+
+                        <span asp-validation-for="Images" class="text-danger"></span>
+
+                        <div class="row images1-row">
+
+                            @foreach (var item in Model.ImagesLinks)
+                            {
+                                <div class="col-lg-4">
+                                    <div class="img">
+                                        <img class="img-item" src="@item.ImgPath">
+                                        <button type="button" class="img-delete-btn delete-saved-img-btn" data-id="@item.Id">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+
+                            
+                           
+
+                            @*<div class="col-lg-4">
+                                <div class="img">
+                                    <img class="img-item" src="imgs/team-1.png">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="img">
+                                    <img class="img-item" src="imgs/team-1.png">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="img">
+                                    <img class="img-item" src="imgs/team-1.png">
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="img">
+                                    <img class="img-item" src="imgs/team-1.png">
+                                </div>
+                            </div>*@
+
+                        </div>
+
+                    </div>
+
+                    <h6>Inspiration</h6>
+                    <hr>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus aliquam fugit vitae modi aperiam ipsum soluta quaerat dolores et placeat possimus, </p>
+
+                    <div class="images-2">
+
+                        <label class="upload-btn">
+                            <i class="fa-solid fa-plus upload-icon"></i>
+                            Upload
+                            <input asp-for="Inspiration" multiple type="file" class="upload-img-file upload-img2-file">
+                        </label>
+
+                        <span asp-validation-for="Inspiration" class="text-danger"></span>
+
+
+                        <div class="row  images2-row">
+
+                            @foreach (var item in Model.InspirationLinkes)
+                            {
+                                <div class="col-lg-4">
+                                    <div class="img">
+                                        <img class="img-item" src="@item.ImgPath">
+                                        <button type="button" class="img-delete-btn delete-saved-img-btn" data-id="@item.Id">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+
+                           @* <div class="col-lg-4">
+                                <img class="img-item" src="imgs/team-1.png">
+                            </div>
+                            <div class="col-lg-4">
+                                <img class="img-item" src="imgs/team-2.png">
+                            </div>
+                            <div class="col-lg-4">
+                                <img class="img-item" src="imgs/team-3.png">
+                            </div>
+                            <div class="col-lg-4">
+                                <img class="img-item" src="imgs/team-4.png">
+                            </div>*@
+
+                        </div>
+
+                    </div>
+
+                    <h6>Measurements</h6>
+                    <hr>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptates sapiente beatae magnam aliquam laudantium, aliquid libero optio inventore eligendi quaerat, nisi, aut tempore repudiandae hic? <a href="#">Link</a></p>
+
+                    <div class="images-3">
+
+                        <label class="upload-btn">
+                            <i class="fa-solid fa-plus upload-icon"></i>
+                            Upload
+                            <input asp-for="Design" type="file" class="upload-img-file upload-img3-file">
+                        </label>
+
+                        <span asp-validation-for="Design" class="text-danger"></span>
+
+
+                        <div class="row  images3-row">
+
+                            @if(!string.IsNullOrEmpty(Model.DesignLink))
+                            {
+                                <div class="col-lg-4">
+                                    <div class="img">
+                                        <img class="img-item" src="@Model.DesignLink">
+                                        <button type="button" class="img-delete-btn delete-saved-dsn-btn" data-id="@Model.Id">
+                                            <i class="fa-solid fa-xmark"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            }
+
+                           
+
+                           @* <div class="col-lg-4">
+                                <img class="img-item" src="imgs/team-1.png">
+                            </div>*@
+                        </div>
+
+                    </div>
+
+
+                    <h6>Project goals</h6>
+                    <hr>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, </p>
+                    <textarea asp-for="Notes" class="goals"></textarea>
+
+                    <button type="submit" class="btn section-btn mt-5 mb-5">Save Changes</button>
+
+                </form>
+            </div>
+
+            <div class="col-lg-3">
+
+                <div class="row">
+
+                    @foreach (var item in Model.SubPackages)
+                    {
+                        <div class="col-lg-12">
+
+                            <div class="package">
+                                <h5>@item.Name</h5>
+                                <hr>
+                                <span>@item.OfferHeader</span>
+                                <div class="img">
+                                    <img src="@item.Image">
+                                </div>
+                                <a href="/Customer/SubPackageDetails?Id=@item.Id&ProjectId=@Model.Id" class="btn section-btn">View Special Offer</a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+</div>
+<!-- End dashboard -->
+
+
+@section Scripts {
+    <script>
+
+
+        $(document).on("click", ".delete-saved-img-btn", function () {
+
+            var Id = $(this).attr('data-id');
+
+            console.log(Id);
+
+            DeleteBtn = $(this);
+
+            $.ajax({
+                url: "/Customer/DeleteImage",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    Id: Id
+                },
+                success: function (result) {
+
+                    if (result.data == true) {
+                        $(DeleteBtn).closest('.col-lg-4').remove();
+                    }
+                },
+                failure: function (info) {
+
+                }
+            });
+        });
+
+        $(document).on("click", ".delete-saved-dsn-btn", function () {
+
+            var Id = $(this).attr('data-id');
+
+            DeleteBtn = $(this);
+
+            $.ajax({
+                url: "/Customer/DeleteDesign",
+                type: "POST",
+                dataType: "json",
+                data: {
+                    Id: Id
+                },
+                success: function (result) {
+
+                    if (result.data == true) {
+                        $(DeleteBtn).closest('.col-lg-4').remove();
+                    }
+                },
+                failure: function (info) {
+
+                }
+            });
+        });
+
+
+    </script>
+}

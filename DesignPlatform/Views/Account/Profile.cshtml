@@ -1,0 +1,101 @@
+﻿@model DesignPlatform.ViewModels.AccountViewModels.AccountProfileViewModel
+
+@{
+    Layout = "_CustomerLayout";
+}
+
+<div class="profile ">
+    <div class="container pt-5 pb-5">
+
+        <form asp-controller="Account" asp-action="Profile">
+
+            <h4 class="text-center">Account Profile</h4>
+            <hr>
+
+            <div>
+                <label>First Name:</label>
+                <input asp-for="FirstName" class="form-control">
+            </div>
+
+            <div>
+                <label>Last Name:</label>
+                <input asp-for="LastName" class="form-control">
+            </div>
+
+            <div>
+                <label>Address:</label>
+                <input asp-for="Address" class="form-control">
+            </div>
+
+            <div>
+                <label>City:</label>
+                <input asp-for="City" class="form-control">
+            </div>
+
+            <div>
+                <label>Country:</label>
+                <select asp-for="CountryId" asp-items="@Model.Countries" class="form-control">
+                </select>
+            </div>
+
+            <div>
+                <label>Zipcode:</label>
+                <input asp-for="ZipCode" class="form-control">
+            </div>
+
+            <div>
+                <label>State:</label>
+                <select asp-for="StateId" asp-items="@Model.States" class="form-control">
+                  
+                </select>
+            </div>
+
+            <div>
+                <label>Email:</label>
+                <input asp-for="Email" class="form-control">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div>
+                <label>Phone:</label>
+                <input asp-for="Phone" class="form-control">
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+            <button class="btn section-btn" type="submit">Update Account Info</button>
+            <a class="btn section-btn mt-3" href="/Account/ChangePassword">Change password</a>
+        </form>
+
+        <div class="profile-packages">
+            <h6>Main Packages Purchased</h6>
+            <hr>
+            @foreach (var item in Model.MainPackagesPurchased)
+            {
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    @item
+                </p>
+            }
+           
+           
+        </div>
+
+        <div class="profile-packages">
+            <h6>Sub Packages Purchased</h6>
+            <hr>
+            @foreach (var item in Model.SubPackagesPurchased)
+            {
+                <p>
+                    <i class="fa-solid fa-check"></i>
+                    @item
+                </p>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+
+
+

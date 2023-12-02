@@ -1,0 +1,54 @@
+﻿@model DesignPlatform.ViewModels.CustomerViewModels.SubPackageViewModel
+
+
+<div class="sub-package pt-5 pb-5">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="img">
+                    <img src="@Model.Image">
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="text pt-4">
+                    <p class="gray-color">this offer is only available for limited time</p>
+                    <p class="offer">@Model.OfferHeader</p>
+
+                    @*<p class="gray-color">for just <span class="offer-price">$150 </span> $97 Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>*@
+                    <p class="gray-color">@Model.OfferDescription</p>
+                    <ul class="feats">
+                        @foreach (var item in Model.Features)
+                        {
+                            <li class="gray-color">
+                                <i class="fa-solid fa-check"></i>
+                                @item
+                            </li>
+                        }
+
+                        
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="description p-3">
+            @Model.Description
+        </div>
+
+
+        <div class="buttons">
+            <form asp-controller="Customer" asp-action="ClientSubPackageAdd">
+                <input name="ProjectId" value="@Model.ProjectId" type="hidden" />
+                <input name="SubPackageId" value="@Model.Id" type="hidden" />
+                <button class="btn section-btn">Pay waith card ending in 7585</button>
+                <button  class="btn section-btn">Enter new credit card</button>
+                <a href="#">No Thanks</a>
+            </form>
+            
+        </div>
+
+    </div>
+</div>

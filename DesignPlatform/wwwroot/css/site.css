@@ -1,0 +1,35 @@
+
+.doc-file {
+    font-size: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border: 1px solid #007aff;
+    position: relative;
+}
+
+.doc-file .img-delete-btn {
+    padding: 5px;
+    color: white;
+    background-color: red;
+    border-radius: 100%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    font-size: 15px;
+}
+
+.ques-note {
+    display:none
+}
+
+.ques-note-active {
+    display: block
+}
+
+
+

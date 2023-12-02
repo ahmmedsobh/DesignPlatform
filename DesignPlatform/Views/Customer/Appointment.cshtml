@@ -1,0 +1,19 @@
+﻿@model DesignPlatform.ViewModels.CustomerViewModels.AppointmentViewModel
+
+
+@{
+    Layout = "_CustomerLayout";
+}
+
+
+<div class="container pt-5 pb-5">
+    <h6>Phone Consultation</h6>
+    <hr>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dicta ipsum omnis <span class="second-color">@Model.Date.ToShortDateString() , at @Model.Date.ToShortTimeString()</span> eum voluptas repudiandae neque reprehenderit consequuntur delectus dignissimos pariatur, quam rem sapiente labore iste aliquid, ipsam reiciendis nihil magni!</p>
+
+    <div class="pt-3 pb-3">
+        <a class="btn section-btn" href="/Customer/AddAppointment?Id=@Model.Id">Reschedule</a>
+    </div>
+
+    <p> <span class="fw-bold">Reminder: </span> Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi voluptatibus reiciendis sequi enim numquam tempore maiores rerum sapiente tenetur praesentium ex alias ad ipsam, a iure? Modi quidem commodi veritatis. </p>
+</div>

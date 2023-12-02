@@ -1,0 +1,36 @@
+﻿@model DesignPlatform.ViewModels.CustomerViewModels.AppointmentViewModel
+
+@{
+    Layout = "_CustomerLayout";
+}
+
+
+<div class="appointment-add">
+    <div class="container">
+        <h4>Schedule your phone consultation</h4>
+            <p class="gray-color">please select data and time (AEST) to talk to your designer</p>
+
+            <h4>Calendar Instructions</h4>
+
+
+                <div class="w-50 m-auto text-start">
+                    <span class="d-block ">Step 1: <span class="gray-color">Select a day on the calendar</span></span>
+                    <span class="d-block">Step 2: <span class="gray-color">Use the scroll bar to look for available time</span></span>
+                    <span class="d-block">Step 3: <span class="gray-color">Select the time that works for you</span></span>
+                    <span class="d-block">Step 4: <span class="gray-color">hit the "submit appointment request" button after you  confirmed all the information is correct </span></span>
+                </div>
+
+                <form asp-controller="Customer" asp-action="AddAppointment">
+                    <input asp-for="Id" type="hidden" />
+                    <p class="gray-color mt-5">Choose date and time</p>
+                    <input asp-for="Date" type="text" id="DatePicker">
+                    <input asp-for="Phone" class="form-control phone" placeholder="Your Phone Number">
+                    <button class="btn section-btn">Submit Appointment Request</button>
+                </form>
+
+
+
+
+    </div>
+
+</div>

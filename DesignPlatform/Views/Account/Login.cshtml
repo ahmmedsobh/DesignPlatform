@@ -1,0 +1,34 @@
+﻿@model DesignPlatform.ViewModels.AccountViewModels.CustomerLoginViewModel
+
+@{
+    Layout = "_AuthLayout";
+}
+
+
+
+<div class="login">
+    <div class="container pt-5 pb-5">
+
+        <form asp-controller="Account" asp-action="Login">
+
+            <h2 class="text-center">Login To Your Account</h2>
+
+            <div>
+                <input asp-for="Email" type="text" class="form-control" placeholder="Email">
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Passsword">
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <button class="btn section-btn" type="submit">Login</button>
+
+
+        </form>
+
+
+
+    </div>
+</div>

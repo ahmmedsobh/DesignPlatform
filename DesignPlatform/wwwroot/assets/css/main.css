@@ -1,0 +1,888 @@
+:root{
+    --main-color:#F8F4EF;
+    --second-color: #B78C61;
+    --dark-color: #33323D;
+    --yellow-color: #ffc400;
+    --section-color: #eff7fa;
+}
+
+/* Start Component */
+ .main-btn {
+    
+    background-color: var(--main-color);
+    color: black;
+    border: 1px solid black;
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
+.main-btn:hover {
+    color: var(--main-color);
+    background-color: var(--second-color);
+}
+
+.main-btn:active {
+    /* color: var(--second-color) !important;
+    background-color: var(--main-color) !important;
+    border: none !important;
+    padding: .5rem 1rem; */
+}
+
+.section-btn {
+    
+    background-color: var(--second-color);
+    color: var(--main-color);
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
+.section-btn:hover {
+    color: var(--main-color);
+    background-color: var(--dark-color);
+}
+
+.main-btn:active {
+    color: var(--main-color);
+    background-color: var(--dark-color);
+}
+ .main-header::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    background-color: var(--second-color);
+    width: 120px;
+    bottom: -20;
+    left: 50%;
+    transform: translateX(-50%);
+ }
+
+ .second-color {
+    color: var(--second-color);
+ }
+
+ .black-color {
+    color: black;
+ }
+
+.gray-color {
+    color: gray;
+}
+ 
+
+/* End Component */
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+/* Start NavBar */
+.navbar {
+    background-color: var(--main-color);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.navbar .logo{
+    width: 260px;
+}
+
+.navbar .navbar-toggler{
+    
+    font-size: 25px;
+}
+
+.navbar .navbar-toggler:focus{
+    box-shadow: none;
+}
+
+.navbar .navbar-toggler[aria-expanded="true"]{
+    border-color: var(--green-color);
+}
+
+.navbar .navbar-nav a {
+   text-transform: uppercase;
+   font-size: 12px;
+}
+
+.navbar .navbar-nav a.active,.navbar .navbar-nav a:hover,.navbar .navbar-nav a:focus  {
+    color: var(--second-color);
+}
+
+.navbar .search-box {
+    border-left: 1px solid var(--second-color);
+}
+
+.navbar .search-box svg {
+    color: var(--second-color);
+}
+
+
+
+/* End NavBar */
+
+
+/* Start Section 1 */
+
+.section-1  {
+    overflow: hidden;
+}
+
+.section-1 .text {
+    width: 70%;
+    margin: auto;
+    
+}
+
+.section-1 .text h2{
+    line-height: 1.3;
+    font-size: 35px;
+
+}
+
+.section-1 .text p{
+    margin-top: 25px;
+    margin-bottom: 35px;
+    font-weight: normal;
+    color: var(--dark-color);
+
+}
+
+.section-1 .text a{
+    padding: 10px 40px;
+}
+
+.section-1 .img {
+    overflow: hidden;
+    
+}
+
+.section-1 img {
+    max-width:105%;
+    transform: translate(-6px);
+}
+
+/* End Section 1 */
+
+/* Start Section 2 */
+
+
+.section-2  {
+    overflow: hidden;
+}
+
+.section-2 .text {
+    width: 70%;
+    margin: auto;
+}
+
+.section-2 .text h2{
+    line-height: 1.3;
+    font-size: 35px;
+
+}
+
+.section-2 .text p{
+    margin-top: 25px;
+    margin-bottom: 35px;
+    font-weight: normal;
+    color: var(--dark-color);
+
+}
+
+.section-2 .text a{
+    padding: 10px 40px;
+}
+
+.section-2 .img {
+    overflow: hidden;
+}
+
+.section-2 img {
+    max-width:120%;
+}
+
+/* End Section 2 */
+
+/* Start Section 2 */
+
+
+.section-3  {
+    overflow: hidden;
+    padding-top: 50px;
+}
+
+.section-3 .text {
+    width: 90%;
+    margin: auto;
+}
+
+.section-3 .text h2{
+    line-height: 1.3;
+    font-size: 35px;
+    margin-top: 30px;
+
+}
+
+.section-3 .text ul{
+    list-style-type: none;
+    padding: 0;
+
+}
+
+.section-3 .text ul li p {
+   display: flex;
+   align-items: center;
+
+}
+
+.section-3 .text ul li svg {
+    color: var(--second-color);
+    font-size: 20px;
+    margin-right: 5px;
+
+}
+
+
+.section-3 .img {
+    overflow: hidden;
+    width: 80%;
+    margin: auto;
+}
+
+.section-3 img {
+    max-width:100%;
+}
+
+/* End Section 2 */
+
+/* Start Slider  */
+.slider {
+    padding-top: 50px;
+    background-color: var(--main-color);
+
+}
+
+.slider h3 {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.slider .content {
+    padding: 30px;
+}
+
+.slider .content .slide {
+    position: relative;
+}
+
+.slider .content .slide::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: #B78C6100;
+    transition: 0.5s;
+}
+
+.slider .content .slide:hover::after {
+    background-color: #B78C61C2;
+}
+
+.slider .content .slide:hover .text {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slider .content .slide img{
+    max-width: 100%;
+}
+
+.slider .content .slide .text {
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    transition: 0.3s;
+    color: white;
+    z-index: 3;
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.slider .content .slide .text h2 {
+    font-size: 30;
+}
+
+.slider .content .slide .text a {
+    text-decoration: none;
+    color: white;
+    border: 1px solid white;
+    padding: 10px 40px;
+}
+
+
+.slider .swiper-button-next::after , .slider .swiper-button-prev::after {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    padding: 10px;
+}
+
+.slider .swiper-pagination-bullet-active {
+    background-color: var(--second-color);
+}
+
+@media (max-width:638px) {
+
+    .slider .content .slide .text h2 {
+        font-size: 16px;
+    }
+    
+    .slider .content .slide .text a {
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        padding: 5px 20px;
+    }
+    
+}
+
+
+
+/* End Slider  */
+
+/* Start Compare */
+.compare table {
+    border: 1px solid var(--second-color);
+}
+
+.compare table tr td {
+    border: 1px solid var(--second-color);
+    color: var(--second-color);
+}
+
+.compare table tr:first-child th {
+    background-color: var(--second-color);
+    color: var(--main-color);
+}
+
+.compare .main-btn {
+    border-color: var(--second-color);
+    background-color: white;
+    display: block;
+    margin: auto;
+    width: fit-content;
+}
+
+.compare .main-btn:hover {
+    background-color: var(--second-color);
+}
+
+/* End Compare */
+
+/* Start Package */
+.packages {
+    background-color: var(--main-color);
+}
+.packages .package {
+    background-color: white;
+}
+
+.packages .package .text {
+    text-align: center;
+    padding: 20px;
+}
+
+.packages .package .text .rate-wrabber {
+    display: flex;
+    justify-content: center;
+}
+
+.packages .package .text .rate-wrabber svg {
+    color: var(--second-color);
+}
+
+.packages .package .img img {
+    max-width: 100%;
+}
+
+.packages .footer {
+    padding: 20px;
+}
+
+.packages .main-btn {
+    border-color: var(--second-color);
+    background-color: white;
+    display: block;
+    margin: auto;
+    width: fit-content;
+}
+
+.packages .main-btn:hover {
+    background-color: var(--second-color);
+}
+
+.packages ul {
+    list-style-type: none;
+}
+
+.packages ul svg {
+   color: var(--second-color);
+}
+
+.packages .list {
+    display: none;
+}
+
+.packages .list.show {
+    display: block;
+}
+
+
+
+/* End Package */
+
+/* Start Overlay  */
+.package-overlay {
+    width: 100%;
+    height: 100vb;
+}
+
+.package-overlay img  {
+    width: 100%;
+    height: 100%;
+}
+
+#select-package-modal .modal-content {
+    border-radius: 0 !important;
+}
+
+#select-package-modal .modal-content .modal-header
+{
+    background-color: var(--second-color);
+    color: var(--main-color);
+    border-radius: 0;
+}
+
+#select-package-modal .modal-content .modal-body input
+{
+    accent-color: var(--second-color);
+}
+
+#select-package-modal .modal-content .modal-body .img img 
+{
+    width: 100%;
+    margin-top: 20px;
+}
+
+#select-package-modal  .main-btn {
+    border-color: var(--second-color);
+    background-color: white;
+    display: block;
+    width: fit-content;
+}
+
+#select-package-modal  .main-btn:hover {
+    background-color: var(--second-color);
+}
+
+
+#select-package-modal .price {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    padding: 5px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#select-package-modal input {
+    border-radius: 0;
+    margin-top: 20px;
+}
+
+#select-package-modal button {
+    width: 100% !important;
+    margin-top: 20px;
+}
+
+#select-package-modal .front-yard, #select-package-modal .front-back-yard {
+    display:none;
+}
+
+
+/* End Overlay  */
+
+/* Start Reviews */
+.reviews {
+    text-align: center;
+}
+
+.reviews .swiper-slide {
+    background-color: var(--main-color);
+}
+
+.reviews .slide {
+    padding: 50px;
+}
+
+.reviews .slide svg {
+    color: var(--second-color);
+    font-size: 100px;
+}
+
+.reviews .swiper-button-next::after , .reviews .swiper-button-prev::after {
+    background-color: var(--second-color);
+    color: var(--main-color);
+    padding: 10px;
+}
+
+.reviews .swiper-pagination-bullet-active {
+    background-color: var(--second-color);
+}
+/* End Reviews */
+
+/* Start User Dashboard */
+.user-dashboard {
+
+    
+    background-color: var(--main-color);
+
+}
+
+.user-dashboard .container{
+
+    
+}
+
+.user-dashboard .container form{
+
+     background-color: white; 
+     padding: 30px ;
+}
+
+
+
+.user-dashboard h6 {
+
+    font-weight: bold;
+
+}
+
+.user-dashboard hr {
+    margin-top: 5px;
+}
+
+
+
+.user-dashboard p {
+    color: #828282;
+}
+
+.user-dashboard .upload-btn {
+
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    margin-bottom: 20px;
+    color: var(--second-color);
+    border: 2px solid var(--second-color);
+    
+}
+
+.user-dashboard .upload-icon {
+
+    font-size: 30px;
+    
+}
+
+.user-dashboard  .upload-img-file {
+
+    display: none;
+    
+}
+
+.user-dashboard .img-item {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.user-dashboard .img {
+    height: 100%;
+    position: relative;
+}
+
+
+.user-dashboard .goals {
+    height: 200px;
+    width: 100%;
+    display: block;
+    border: 1px solid #828282;
+}
+
+.user-dashboard .goals:focus {
+    outline: none;
+}
+
+.user-dashboard .container .package {
+    background-color: white;
+    text-align: center;
+    padding: 5px;
+    margin-bottom: 20px;
+
+}
+
+.user-dashboard .container .package hr {
+    margin: 5px;
+    
+}
+
+.user-dashboard .container .package span {
+    margin: 5px;
+    color: #828282;
+}
+
+.user-dashboard .container .package .img {
+   height: 50px;
+   overflow: hidden;
+   width: 100%;
+   margin-top: 5px;
+}
+
+.user-dashboard .container .package .section-btn {
+    width: 100%;
+ }
+
+
+.user-dashboard .img-delete-btn {
+    padding: 5px;
+    color: white;
+    background-color: red;
+    border-radius: 100%;
+    border: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+}
+
+.user-dashboard .img-delete-btn:hover {
+    color: red;
+    background-color: white;
+}
+
+/* End User Dashboard */
+
+/* Start Footer */
+
+footer {
+    background-color: var(--main-color);
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+footer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+footer .link-list a {
+    text-decoration: none;
+    color: gray;
+}
+
+footer .link-list a:hover {
+    color: var(--second-color);
+}
+
+footer ul:not(.link-list) {
+    display: flex;
+}
+
+footer ul:not(.link-list) li {
+    margin-left: 5px;
+}
+
+footer ul:not(.link-list) li a {
+   padding: 5px;
+   background-color: var(--second-color);
+   width: 30px;
+   height: 30px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   color: var(--main-color);
+}
+/* End Footer */
+
+
+/* Start Appointment Add */
+.appointment-add {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+    .appointment-add form {
+        width: 308px;
+        margin: auto;
+    }
+
+    .appointment-add .phone {
+        display: block;
+        border-radius: 0;
+        margin-bottom: 5px;
+    }
+
+    .appointment-add button {
+        width: 100%;
+    }
+
+/* End Appointment Add */
+
+
+/* Start Sub Package */
+
+.sub-package .text .offer {
+    font-size: 25px;
+}
+
+.sub-package .text .offer-price {
+    text-decoration: line-through;
+    display: inline-block;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+
+.sub-package .feats {
+    list-style-type: none;
+    padding: 0;
+}
+
+    .sub-package .feats svg {
+        color: var(--second-color);
+        margin-right: 5px;
+        font-size: 20px;
+    }
+
+.sub-package .buttons {
+    width: 400px;
+    margin: auto;
+}
+
+    .sub-package .buttons a, .sub-package .buttons button {
+        display: block;
+        margin: 5px auto;
+        width:100%
+    }
+
+        .sub-package .buttons a {
+            display: block;
+            margin: 5px auto;
+            color: var(--second-color);
+            text-align: center;
+        }
+
+/* End Sub Package */
+
+/* Start Customer Dashboard */
+.customer-dashboard table {
+    width: 100%;
+}
+
+    .customer-dashboard table th {
+        font-weight: bold;
+        background-color: var(--second-color);
+        color: white;
+        padding: 10px;
+    }
+
+    .customer-dashboard table td {
+        background-color: var(--main-color);
+        padding: 10px;
+    }
+/* End Customer Dashboard */
+
+/* Start Profile */
+.profile {
+    background-color: var(--main-color);
+}
+
+    .profile .container {
+        background-color: white;
+    }
+
+    .profile form {
+        width: 50%;
+        margin: auto;
+    }
+
+        .profile form div {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+
+        .profile form input, .profile form select {
+            border-radius: 0;
+        }
+
+    .profile .section-btn {
+        width: 100%;
+    }
+
+    .profile .profile-packages {
+        width: 50%;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+        .profile .profile-packages svg {
+            margin-right: 5px;
+        }
+
+        .profile .profile-packages p {
+            padding: 10px;
+            background-color: var(--second-color);
+            color: white;
+        }
+
+/* End Profile */
+
+/* Start Login */
+.login {
+    background-color: var(--main-color);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+    .login form {
+        width: 40%;
+        margin: auto;
+    }
+
+        .login form input {
+            border-radius: 0;
+            margin-top: 10px;
+        }
+
+        .login form button {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+/* End Login */
+
+
