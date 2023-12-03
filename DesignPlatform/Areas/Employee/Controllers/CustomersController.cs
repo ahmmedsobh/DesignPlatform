@@ -34,7 +34,7 @@ namespace DesignPlatform.Areas.Employee.Controllers
 
             if(!string.IsNullOrEmpty(model.SearchString))
             {
-                items = items.Where(i => (i.Client.FirstName+ i.Client.FirstName + i.Phone + i.Client.Country + i.Client.City + i.Client.State + i.Client.Email).Contains(model.SearchString));
+                items = items.Where(i => (i.Client.FirstName+ i.Client.LastName + i.Phone + i.Client.Country.Name + i.Client.City + i.Client.State.Name + i.Client.Email).Contains(model.SearchString));
             }
 
             var itemsToDisplay = await items.Select(i => new EmployeeProjectsDetailsViewModel()

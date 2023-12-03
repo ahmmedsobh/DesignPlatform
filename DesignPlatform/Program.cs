@@ -44,6 +44,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 
+builder.Services.AddSignalR();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -84,6 +85,7 @@ app.MapControllerRoute(
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
+
 //app.MapRazorPages();
 
 app.Run();

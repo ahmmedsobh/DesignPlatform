@@ -22,6 +22,12 @@ namespace DesignPlatform.Models
         [InverseProperty(nameof(Project.Desinger))]
         public virtual ICollection<Project> DesignerProjects { get; set; }
 
+        [InverseProperty(nameof(Message.Sender))]
+        public virtual ICollection<Message> SentMessages { get; set; }
+
+        [InverseProperty(nameof(Message.Receiver))]
+        public virtual ICollection<Message> ReceivedMessages { get; set; }
+
 
         [ForeignKey(nameof(CountryId))]
         public Country Country { get; set; }

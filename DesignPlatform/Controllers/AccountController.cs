@@ -14,7 +14,6 @@ using System.Runtime.CompilerServices;
 
 namespace DesignPlatform.Controllers
 {
-    [AuthorizeRoles(Roles.Client)]
     public class AccountController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -142,10 +141,11 @@ namespace DesignPlatform.Controllers
             return View(model);
         }
 
-        public IActionResult Login()
+        public IActionResult Login(string returnUrl)
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Login(CustomerLoginViewModel model)
         {
