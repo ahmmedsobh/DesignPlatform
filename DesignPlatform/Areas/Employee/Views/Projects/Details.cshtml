@@ -6,6 +6,14 @@
 
 
 <div class="container-fluid">
+
+    <div class="employee-chat-btns">
+
+        <a href="/Employee/Messages/IntChat?SelectedUser=@Model.DesignerId">Int Chat</a>
+        <a href="/Employee/Messages/Index?SelectedUser=@Model.ClientId">Chat</a>
+
+    </div>
+
     <form class="frm" asp-area="Employee" asp-controller="Projects" asp-action="Edit" enctype="multipart/form-data">
         <input type="hidden" asp-for="Id" />
 

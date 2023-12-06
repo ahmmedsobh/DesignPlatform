@@ -15,6 +15,7 @@ namespace DesignPlatform.ViewModels.CustomerViewModels
         //[Required]
         public IFormFile Design { get; set; }
         public string Notes { get; set; }
+        public string ProjectMangerId { get; set; }
         public List<ImageViewModel> ImagesLinks { get; set; }
         public List<ImageViewModel> InspirationLinkes { get; set; }
         public string DesignLink { get; set; }

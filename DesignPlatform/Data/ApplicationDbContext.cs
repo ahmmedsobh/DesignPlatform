@@ -15,7 +15,7 @@ namespace DesignPlatform.Data
         {
             base.OnModelCreating(builder);
 
-            //builder.Entity<ApplicationUser>().HasQueryFilter(c => !c.IsDeleted);
+            builder.Entity<ApplicationUser>().HasQueryFilter(c => !c.IsDeleted);
         }
 
         public DbSet<Image> Images { get; set; }

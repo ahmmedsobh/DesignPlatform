@@ -97,6 +97,7 @@ namespace DesignPlatform.Controllers
                         LastName = model.LastName,
                         Address = model.StreetAddress,
                         ZipCode = model.ZipCode,
+						MainRoles = Convert.ToString((int)Roles.Client) + ","
                     };
 
 					var UserResult = await userManager.CreateAsync(client,"123456");

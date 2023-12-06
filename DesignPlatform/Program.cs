@@ -2,6 +2,7 @@ using DesignPlatform.Data;
 using DesignPlatform.Helpers;
 using DesignPlatform.Helpers.CurrentUserService;
 using DesignPlatform.Helpers.UploadHelper;
+using DesignPlatform.Hubs;
 using DesignPlatform.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -85,6 +86,8 @@ app.MapControllerRoute(
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.MapHub<ChatHub>("/chatHub");
 
 //app.MapRazorPages();
 

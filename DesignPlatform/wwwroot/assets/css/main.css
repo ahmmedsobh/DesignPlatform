@@ -553,10 +553,8 @@ body {
 
 /* Start User Dashboard */
 .user-dashboard {
-
-    
     background-color: var(--main-color);
-
+    position: relative;
 }
 
 .user-dashboard .container{
@@ -682,6 +680,26 @@ body {
     color: red;
     background-color: white;
 }
+
+    .user-dashboard .chat-cont a {
+        color: white;
+        position: fixed;
+        right: 30px;
+        bottom: 30px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .user-dashboard .chat-cont svg {
+        font-size: 60px;
+        color: var(--second-color);
+    }
+
+    .user-dashboard .chat-cont span {
+        position: absolute;
+        left: 14px;
+        bottom: 20px;
+    }
 
 /* End User Dashboard */
 
@@ -884,5 +902,112 @@ footer ul:not(.link-list) li a {
         }
 
 /* End Login */
+
+/* Start Customer Chat */
+
+.customer-chat {
+    background-color: var(--main-color);
+}
+
+    .customer-chat .messages-box .header,
+    .customer-chat .messages-box .messages,
+    .customer-chat .messages-box .footer {
+        background-color: white;
+        padding: 20px;
+        margin-bottom: 10px;
+    }
+
+        .customer-chat .messages-box .header h6 {
+            margin-bottom: 0;
+        }
+
+    .customer-chat .messages-box .messages {
+        display: flex;
+        flex-direction: column;
+        height: 572px;
+        overflow: auto;
+    }
+
+        .customer-chat .messages-box .messages .message {
+            background-color: var(--dark-color);
+            border-radius: 30px;
+            padding: 15px;
+            color: white;
+            margin-bottom: 10px;
+            max-width: 80%;
+        }
+
+            .customer-chat .messages-box .messages .message p {
+                margin-bottom: 0;
+            }
+
+            .customer-chat .messages-box .messages .message span {
+                margin-top: 10px;
+                font-size: 12px;
+                display: block;
+                margin-top: 15px;
+            }
+
+        .customer-chat .messages-box .messages .sent-message {
+            align-self: flex-end;
+            background-color: var(--second-color);
+        }
+
+        .customer-chat .messages-box .messages .recieve-message {
+            align-self: flex-start;
+        }
+
+    .customer-chat .messages-box .footer {
+        display: flex;
+    }
+
+        .customer-chat .messages-box .footer .send-message-box {
+            width: 100%;
+            display: flex;
+        }
+
+
+        .customer-chat .messages-box .footer input {
+            height: 44px;
+            border-radius: 30px;
+            background-color: #e1e1e1;
+            border: none;
+            padding: 10px;
+            flex: 1;
+        }
+
+            .customer-chat .messages-box .footer input:focus {
+                outline: none;
+            }
+
+        .customer-chat .messages-box .footer button {
+            border-radius: 50%;
+            background-color: var(--second-color);
+            color: white;
+            border: none;
+            width: 44px;
+            height: 44px;
+            margin-left: 5px;
+        }
+
+    .customer-chat .users {
+        background-color: white;
+        height: 748px;
+    }
+
+        .customer-chat .users .user {
+            text-decoration: none;
+            color: var(--second-color);
+            display: inline-block;
+            padding: 10px;
+            width: 100%;
+        }
+
+            .customer-chat .users .user:hover, .customer-chat .users .user.active {
+                background-color: var(--second-color);
+                color: white;
+            }
+
+/* End Customer Chat */
 
 

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels.EmployeeAppointmentsViewModel>
+
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row align-items-center mb-2">
+                <div class="col">
+                    <h2 class="h5 page-title">Welcome!</h2>
+                </div>
+                @* <div class="col-auto">
+                <form class="form-inline">
+                <div class="form-group d-none d-lg-inline">
+                <label for="reportrange" class="sr-only">Date Ranges</label>
+                <div id="reportrange" class="px-2 py-2 text-muted">
+                <span class="small"></span>
+                </div>
+                </div>
+                <div class="form-group">
+                <button type="button" class="btn btn-sm"><span class="fe fe-refresh-ccw fe-16 text-muted"></span></button>
+                <button type="button" class="btn btn-sm mr-2"><span class="fe fe-filter fe-16 text-muted"></span></button>
+                </div>
+                </form>
+                </div>*@
+            </div>
+            <div class="mb-2 align-items-center">
+                <div class="card shadow mb-4">
+                    <div class="card-body">
+                        <div id='calendar'></div>
+                    </div> <!-- .card-body -->
+                </div> <!-- .card -->
+            </div>
+
+        </div> <!-- .col-12 -->
+    </div> <!-- .row -->
+</div> <!-- .container-fluid -->
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                initialDate: '2023-11-07',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: @Json.Serialize(Model),
+                eventColor: '#378006',
+                //[
+                //    {
+                //        title: 'All Day Event',
+                //        start: '2023-11-01'
+                //    },
+                //    {
+                //        title: 'Long Event',
+                //        start: '2023-11-07',
+                //        end: '2023-11-10'
+                //    },
+                //    {
+                //        groupId: '999',
+                //        title: 'Repeating Event',
+                //        start: '2023-11-09T16:00:00'
+                //    },
+                //    {
+                //        groupId: '999',
+                //        title: 'Repeating Event',
+                //        start: '2023-11-16T16:00:00'
+                //    },
+                //    {
+                //        title: 'Conference',
+                //        start: '2023-11-11',
+                //        end: '2023-11-13'
+                //    },
+                //    {
+                //        title: 'Meeting',
+                //        start: '2023-11-12T10:30:00',
+                //        end: '2023-11-12T12:30:00'
+                //    },
+                //    {
+                //        title: 'Lunch',
+                //        start: '2023-11-12T12:00:00'
+                //    },
+                //    {
+                //        title: 'Meeting',
+                //        start: '2023-11-12T14:30:00'
+                //    },
+                //    {
+                //        title: 'Birthday Party',
+                //        start: '2023-11-13T07:00:00'
+                //    },
+                //    {
+                //        title: 'Click for Google',
+                //        url: 'https://google.com/',
+                //        start: '2023-11-28'
+                //    }
+                //]
+            });
+
+            calendar.render();
+        });
+    </script>
+}
+

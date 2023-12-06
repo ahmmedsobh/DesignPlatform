@@ -12,6 +12,10 @@ namespace DesignPlatform.Models
         public string ZipCode { get; set; }
         public int? CountryId { get; set; }
         public int? StateId { get; set; }
+        public string MainRoles { get; set; }
+        public DateTime Date { get; set; }
+        public bool IsActive { get; set; }
+        public bool IsDeleted { get; set; }
 
         [InverseProperty(nameof(Project.Client))]
         public virtual ICollection<Project> ClientProjects { get; set; }

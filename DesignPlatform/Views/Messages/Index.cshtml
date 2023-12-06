@@ -18,7 +18,7 @@
                     {
                         if(item.Selected)
                         {
-                            <a href="#" class="user active">
+                            <a href="/Messages/Index?SelectedUser=@item.Id" class="user active">
                                 <div>
                                     <h5>@item.Name</h5>
                                     <p>@item.LastMessage</p>
@@ -27,7 +27,7 @@
                         }
                         else
                         {
-                            <a href="#" class="user">
+                            <a href="/Messages/Index?SelectedUser=@item.Id" class="user">
                                 <div>
                                     <h5>@item.Name</h5>
                                     <p>@item.LastMessage</p>
@@ -76,12 +76,15 @@
 
                     <div class="footer">
 
-                        <div class="send-message-box">
-                            <input class="message">
-                            <button type="button" class="sendBtn" data-receiverId="@Model.ReceiverId">
-                                <i class="fa-solid fa-paper-plane"></i>
-                            </button>
-                        </div>
+                        @if(!Model.NoSelectedUser)
+                        {
+                            <div class="send-message-box">
+                                <input class="messageInpt">
+                                <button type="button" class="sendBtn" data-receiverId="@Model.ReceiverId">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        }
 
                     </div>
 
@@ -102,23 +105,38 @@
 
         var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
 
-        connection.on("ReceiveMessage", function (message, date, time) {
-            
-            var messge = `
-                     <div class="message recieve-message">
+        connection.on("ReceiveMessage", function (message, date, time, senderId) {
+            var messge =``;
+            if(senderId == "@Model.SenderId")
+            {
+                messge = `
+                        <div class="message sent-message">
+                            <p>${message}</p>
+                            <span>${date} ${time}</span>
+                        </div>
+                `;
+
+            }
+            else{
+
+                messge = `
+                    <div class="message recieve-message">
                         <p>${message}</p>
                         <span>${date} ${time}</span>
                     </div>
-            `;
+                 `;
+
+            }
 
             $(".messages").append(messge);
+            $(".messages").scrollTop($(".messages")[0].scrollHeight);
         });
 
-        $(".sendButton").click(function () {
+        $(".sendBtn").click(function () {
             var receiverId = $(this).attr("data-receiverId");
-            var message = $(".message").val();
+            var message = $(".messageInpt").val();
             connection.invoke("SendMessage", receiverId, message);
-            $(".message").val("").focus();
+            $(".messageInpt").val("").focus();
         });
 
         connection.start().then(function () {
@@ -126,6 +144,12 @@
         }).catch(function (err) {
             console.error(err.toString());
         });
+
+        $(function(){
+
+            $(".messages").scrollTop($(".messages")[0].scrollHeight);
+
+        })
 
     </script>
 }

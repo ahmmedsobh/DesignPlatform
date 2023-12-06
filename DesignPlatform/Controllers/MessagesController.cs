@@ -1,8 +1,10 @@
 ﻿using DesignPlatform.Data;
 using DesignPlatform.Helpers.CurrentUserService;
+using DesignPlatform.Models;
 using DesignPlatform.ViewModels.MessagesViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Collections.Immutable;
 
 namespace DesignPlatform.Controllers
@@ -21,14 +23,14 @@ namespace DesignPlatform.Controllers
         public async Task<IActionResult> Index(string SelectedUser)
         {
             var userId = currentUserService.UserId;
-            var User = await currentUserService.GetUser();
+            var User = await context.Users.FirstOrDefaultAsync(i=> i.Id == SelectedUser);
 
             if(User == null)
             {
-                return BadRequest();
+                User = new ApplicationUser();
             }
 
-            var messages = await context.Messages.Where(i => (i.SenderId == userId || i.SenderId == SelectedUser) && (i.ReceiverId == userId || i.ReceiverId == SelectedUser)).OrderByDescending(i=> i.Id).Select(i=> new MessagesListViewModel()
+            var messages = await context.Messages.Where(i => (i.SenderId == userId || i.SenderId == SelectedUser) && (i.ReceiverId == userId || i.ReceiverId == SelectedUser)).Select(i=> new MessagesListViewModel()
             {
                 Id = i.Id,
                 Message = i.Title,
@@ -50,7 +52,10 @@ namespace DesignPlatform.Controllers
             {
                 Users = users,
                 Messages = messages,
-                Name = $"{User.FirstName} {User.LastName}",
+                ReceiverName = $"{User.FirstName} {User.LastName}",
+                ReceiverId = User.Id,
+                NoSelectedUser = string.IsNullOrEmpty(User.FirstName),
+                SenderId = userId,
             };
 
 

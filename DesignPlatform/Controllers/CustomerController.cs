@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DesignPlatform.Controllers
 {
-    [AuthorizeRoles(Roles.Client)]
+    //[AuthorizeRoles/*(Roles.Client)*/]
     public class CustomerController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -55,6 +55,7 @@ namespace DesignPlatform.Controllers
                 InspirationLinkes = i.Images.Where(i=> i.Type == (int)ImageType.Inspiration).Select(p=> new ImageViewModel() { Id = p.Id, ImgPath = AppHost.Url + p.ImagePath }).ToList(),
                 DesignLink = !string.IsNullOrEmpty(i.DesignImagePath) ? AppHost.Url + i.DesignImagePath : "",
                 Notes = i.Notes,
+                ProjectMangerId = i.ProjectManagerId,
                 SubPackages = context.PackageSubPackages.Where(p=> p.PackageId == i.ProjectPackages.Select(x=> x.PackageId).FirstOrDefault() && !i.ProjectSubPackages.Any(x => x.SubPackageId == p.Id)).Select(p=> new SubPackageViewModel()
                 { 
                     Id = p.SubPackageId,
@@ -65,6 +66,7 @@ namespace DesignPlatform.Controllers
                     Description = p.SubPackage.Description,
                     Features = p.SubPackage.SubPackageFeatures.Select(i=> i.Name).ToList(),
                     IsSubscripe = i.ProjectSubPackages.Any(x=> x.SubPackageId == p.Id),
+                    
                 }).ToList(),
 
             }).FirstOrDefaultAsync();

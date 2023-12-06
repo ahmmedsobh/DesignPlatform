@@ -172,6 +172,11 @@ namespace DesignPlatform.Controllers
         }
 
 
+        public async Task<IActionResult> Logout()
+        {
+            await signInManager.SignOutAsync();
+            return Redirect("/Home");
+        }
 
         #region Functions
         async Task<SelectList> Countries(int SelectedValue = 0)
