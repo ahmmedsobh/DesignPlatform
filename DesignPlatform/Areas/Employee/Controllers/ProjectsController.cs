@@ -193,6 +193,19 @@ namespace DesignPlatform.Areas.Employee.Controllers
                 DesignLinks = i.DesignDocs.Where(i => i.Type == (int)DocType.Design).Select(p => new ImageViewModel(){ Id = p.Id, ImgPath = AppHost.Url + p.DocPath } ).ToList(),
                 DocumentLinks = i.DesignDocs.Where(i => i.Type == (int)DocType.Doc).Select(p => new ImageViewModel() { Id = p.Id, ImgPath = AppHost.Url + p.DocPath }).ToList(),
                 DesignerId = i.DesignerId,
+                SubPackages = context.PackageSubPackages.Where(p => p.PackageId == i.ProjectPackages.Select(x => x.PackageId).FirstOrDefault() && !i.ProjectSubPackages.Any(x => x.SubPackageId == p.SubPackageId)).Select(p => new SubPackageViewModel()
+                {
+                    Id = p.SubPackageId,
+                    Name = p.SubPackage.Name,
+                    OfferHeader = p.SubPackage.OfferHeader,
+                    OfferDescription = p.SubPackage.OfferDescription,
+                    Image = AppHost.Url + p.SubPackage.ImagePath,
+                    Description = p.SubPackage.Description,
+                    Features = p.SubPackage.SubPackageFeatures.Select(i => i.Name).ToList(),
+                    IsSubscripe = i.ProjectSubPackages.Any(x => x.SubPackageId == p.Id),
+                    Price = p.SubPackage.Price,
+
+                }).ToList(),
 
             }).FirstOrDefaultAsync();
 
@@ -317,6 +330,36 @@ namespace DesignPlatform.Areas.Employee.Controllers
             {
                 data = true,
             });
+        }
+
+        
+        public async Task<IActionResult> ClientSubPackageAdd(int ProjectId, int SubPackageId)
+        {
+            var package = await context.SubPackages.FirstOrDefaultAsync(i => i.Id == SubPackageId);
+            var project = await context.Projects.FirstOrDefaultAsync(i => i.Id == ProjectId);
+
+            if (package == null || project == null)
+            {
+                return BadRequest();
+            }
+
+            var ProjectSubPackage = new ProjectSubPackage()
+            {
+                ProjectId = ProjectId,
+                SubPackageId = SubPackageId
+            };
+
+            await context.AddAsync(ProjectSubPackage);
+            var Result = await context.SaveChangesAsync() > 0;
+
+            if (Result)
+            {
+                return RedirectToAction(nameof(Details), new { Id = ProjectId });
+            }
+
+
+            return BadRequest();
+
         }
 
         #region Functions

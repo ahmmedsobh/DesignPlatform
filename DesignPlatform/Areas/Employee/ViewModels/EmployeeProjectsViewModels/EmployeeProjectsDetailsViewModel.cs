@@ -139,5 +139,7 @@ namespace DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels
         public SelectList Employees { get; set; }
         public SelectList Designers { get; set; }
 
+        public List<SubPackageViewModel> SubPackages { get; set; }
+
     }
 }

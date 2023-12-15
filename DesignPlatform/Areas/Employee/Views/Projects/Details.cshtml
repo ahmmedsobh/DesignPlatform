@@ -132,7 +132,7 @@
 
                 </div>
 
-                
+
 
                 <div class="col-lg-12 mb-2">
                     <div class="card shadow">
@@ -165,7 +165,7 @@
                                 </select>
                                 @if (Model.WhatSortOfStyleAnswer == "Other")
                                 {
-                                     <div class="ques-note ques-note-active">
+                                    <div class="ques-note ques-note-active">
                                         <label>Note</label>
                                         <textarea class="form-control " rows="4" asp-for="WhatSortOfStyleNotes"></textarea>
                                         <span class="validation-message text-danger">This field is required</span>
@@ -202,7 +202,7 @@
                                 @if (Model.DoyouEntertainALotAnswer == "Yes")
                                 {
                                     <div class="ques-note ques-note-active">
-                                    <label>Note</label>
+                                        <label>Note</label>
                                         <textarea class="form-control " rows="4" asp-for="DoyouEntertainALotNotes"></textarea>
                                         <span class="validation-message text-danger">This field is required</span>
                                     </div>
@@ -241,12 +241,12 @@
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
-                                    @if(Model.WhatYourAreLookingToKeepAnswer == "Yes")
+                                    @if (Model.WhatYourAreLookingToKeepAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
+                                            <label>Note</label>
                                             <textarea class="form-control " rows="4" asp-for="WhatYourAreLookingToKeepNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
+                                            <span class="validation-message text-danger">This field is required</span>
                                         </div>
                                     }
                                     else
@@ -270,20 +270,20 @@
                                     @if (Model.WouldYouLikeToAddHardscapeAnswer == "Other")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="WouldYouLikeToAddHardscapeNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="WouldYouLikeToAddHardscapeNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
                                     else
                                     {
                                         <div class="ques-note">
-                                        <label>Note</label>
+                                            <label>Note</label>
                                             <textarea class="form-control " rows="4" asp-for="WouldYouLikeToAddHardscapeNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
-                                    
+
 
                                 </div>
 
@@ -304,7 +304,7 @@
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
-                                    @if(Model.DoYouWantAWaterFeatureAnswer == "Yes")
+                                    @if (Model.DoYouWantAWaterFeatureAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
                                             <label>Note</label>
@@ -320,18 +320,18 @@
                                             <span class="validation-message text-danger">This field is required</span>
                                         </div>
                                     }
-                                    
+
                                 </div>
 
                                 <div class="form-group">
                                     <label>Do you want a BBQ Area?</label>
                                     <select asp class="form-control ques-select" asp-for="DoYouWantABBQAreaAnswer">
-                                    <option disabled selected value="">Select</option>
+                                        <option disabled selected value="">Select</option>
 
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
-                                    @if(Model.DoYouWantABBQAreaAnswer == "Yes")
+                                    @if (Model.DoYouWantABBQAreaAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
                                             <label>Note</label>
@@ -347,7 +347,7 @@
                                             <span class="validation-message text-danger">This field is required</span>
                                         </div>
                                     }
-                                    
+
                                 </div>
 
                                 <div class="form-group">
@@ -358,13 +358,13 @@
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
-                                    @if(Model.DoYoWantToHaveAFirePitAreaAnswer == "Yes")
+                                    @if (Model.DoYoWantToHaveAFirePitAreaAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="DoYoWantToHaveAFirePitAreaNotes"></textarea>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="DoYoWantToHaveAFirePitAreaNotes"></textarea>
                                             <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                        </div>
                                     }
                                     else
                                     {
@@ -374,7 +374,7 @@
                                             <span class="validation-message text-danger">This field is required</span>
                                         </div>
                                     }
-                                    
+
                                 </div>
 
 
@@ -386,7 +386,7 @@
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
-                                    @if(Model.DoYouWantAGrassAreaAnswer == "Yes")
+                                    @if (Model.DoYouWantAGrassAreaAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
                                             <label>Note</label>
@@ -402,7 +402,7 @@
                                             <span class="validation-message text-danger">This field is required</span>
                                         </div>
                                     }
-                                    
+
                                 </div>
 
                                 <div class="form-group">
@@ -413,7 +413,7 @@
                                         <option value="Combination">Combination</option>
                                     </select>
 
-                                   
+
                                 </div>
 
                                 <div class="form-group">
@@ -425,36 +425,36 @@
                                         <option value="No">No</option>
                                     </select>
 
-                                    @if(Model.DoYouWantAnyPrivacyAnswer == "Yes")
+                                    @if (Model.DoYouWantAnyPrivacyAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <lable>Privay where note</lable>
-                                        <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes1"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <lable>Privay where note</lable>
+                                            <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes1"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
 
                                         <div class="ques-note ques-note-active">
-                                        <lable>Privay matrail note</lable>
-                                        <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes2"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <lable>Privay matrail note</lable>
+                                            <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes2"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
                                     else
                                     {
                                         <div class="ques-note">
-                                        <lable>Privay where note</lable>
-                                        <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes1"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
-
-                                    <div class="ques-note">
-                                        <lable>Privay matrail note</lable>
-                                        <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes2"></textarea>
+                                            <lable>Privay where note</lable>
+                                            <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes1"></textarea>
                                             <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                        </div>
+
+                                        <div class="ques-note">
+                                            <lable>Privay matrail note</lable>
+                                            <textarea class="form-control " rows="4" asp-for="DoYouWantAnyPrivacyNotes2"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
 
-                                    
+
 
                                 </div>
 
@@ -466,13 +466,13 @@
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
-                                    @if(Model.DoYouHaveOrWantAPergolaOrCoveredPatioAreaAnswer == "Yes")
+                                    @if (Model.DoYouHaveOrWantAPergolaOrCoveredPatioAreaAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="DoYouHaveOrWantAPergolaOrCoveredPatioAreaNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="DoYouHaveOrWantAPergolaOrCoveredPatioAreaNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
 
                                     }
                                     else
@@ -484,7 +484,7 @@
                                         </div>
                                     }
 
-                                    
+
                                 </div>
 
 
@@ -515,20 +515,20 @@
                                     @if (Model.FYWhatAreYouLookingToKeepOrRemoveInYourYardAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active ">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="FYWhatAreYouLookingToKeepOrRemoveInYourYardNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="FYWhatAreYouLookingToKeepOrRemoveInYourYardNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
                                     else
                                     {
-                                         <div class="ques-note">
-                                        <label>Note</label>
+                                        <div class="ques-note">
+                                            <label>Note</label>
                                             <textarea class="form-control " rows="4" asp-for="FYWhatAreYouLookingToKeepOrRemoveInYourYardNotes"></textarea>
                                             <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                        </div>
                                     }
-                                   
+
                                 </div>
 
                                 <div class="form-group">
@@ -539,23 +539,23 @@
                                         <option value="Other ">Other </option>
                                     </select>
 
-                                    @if(Model.FYWouldYouLikeToAddAnyTypeOfHardscapeAnswer == "Other")
+                                    @if (Model.FYWouldYouLikeToAddAnyTypeOfHardscapeAnswer == "Other")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <lable>Note</lable>
-                                        <textarea class="form-control " rows="4" asp-for="FYWouldYouLikeToAddAnyTypeOfHardscapeNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <lable>Note</lable>
+                                            <textarea class="form-control " rows="4" asp-for="FYWouldYouLikeToAddAnyTypeOfHardscapeNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
                                     else
                                     {
                                         <div class="ques-note">
-                                        <lable>Note</lable>
+                                            <lable>Note</lable>
                                             <textarea class="form-control " rows="4" asp-for="FYWouldYouLikeToAddAnyTypeOfHardscapeNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
-                                    
+
                                 </div>
 
                                 <div class="form-group">
@@ -575,23 +575,23 @@
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
-                                    @if(Model.FYDoYouWantToDoAnythingDifferentWithYourEntranceAnswer == "Yes")
+                                    @if (Model.FYDoYouWantToDoAnythingDifferentWithYourEntranceAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="FYDoYouWantToDoAnythingDifferentWithYourEntranceNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="FYDoYouWantToDoAnythingDifferentWithYourEntranceNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
                                     else
                                     {
-                                         <div class="ques-note">
-                                        <label>Note</label>
-                                        <textarea class="form-control" rows="4" asp-for="FYDoYouWantToDoAnythingDifferentWithYourEntranceNotes"></textarea>
+                                        <div class="ques-note">
+                                            <label>Note</label>
+                                            <textarea class="form-control" rows="4" asp-for="FYDoYouWantToDoAnythingDifferentWithYourEntranceNotes"></textarea>
                                             <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                        </div>
                                     }
-                                   
+
                                 </div>
 
                                 <div class="form-group">
@@ -603,23 +603,23 @@
                                         <option value="No">No</option>
                                     </select>
 
-                                    @if(Model.FYDoYouWantAWaterFeatureAnswer == "Yes")
+                                    @if (Model.FYDoYouWantAWaterFeatureAnswer == "Yes")
                                     {
 
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="FYDoYouWantAWaterFeatureNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="FYDoYouWantAWaterFeatureNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
                                     else
                                     {
-                                        
-                                    <div class="ques-note">
-                                        <label>Note</label>
+
+                                        <div class="ques-note">
+                                            <label>Note</label>
                                             <textarea class="form-control " rows="4" asp-for="FYDoYouWantAWaterFeatureNotes"></textarea>
                                             <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                        </div>
                                     }
 
                                 </div>
@@ -633,24 +633,24 @@
                                         <option value="No">No</option>
                                     </select>
 
-                                    @if(Model.FYDoYouWantAGrassAreaAnswer == "Yes")
+                                    @if (Model.FYDoYouWantAGrassAreaAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="FYDoYouWantAGrassAreaNotes"></textarea>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="FYDoYouWantAGrassAreaNotes"></textarea>
                                             <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                        </div>
                                     }
                                     else
                                     {
                                         <div class="ques-note">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="FYDoYouWantAGrassAreaNotes"></textarea>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="FYDoYouWantAGrassAreaNotes"></textarea>
                                             <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                        </div>
                                     }
 
-                                    
+
                                 </div>
 
                                 <div class="form-group">
@@ -662,15 +662,16 @@
                                         <option value="No">No</option>
                                     </select>
 
-                                    @if(Model.FYDoYouWantAnyTallTreesInYourFrontYardAnswer == "Yes")
+                                    @if (Model.FYDoYouWantAnyTallTreesInYourFrontYardAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
-                                        <label>Note</label>
-                                        <textarea class="form-control " rows="4" asp-for="FYDoYouWantAnyTallTreesInYourFrontYardNotes"></textarea>
-                                        <span class="validation-message text-danger">This field is required</span>
-                                    </div>
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="FYDoYouWantAnyTallTreesInYourFrontYardNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
                                     }
-                                    else {
+                                    else
+                                    {
                                         <div class="ques-note">
                                             <label>Note</label>
                                             <textarea class="form-control " rows="4" asp-for="FYDoYouWantAnyTallTreesInYourFrontYardNotes"></textarea>
@@ -678,7 +679,7 @@
                                         </div>
                                     }
 
-                                    
+
                                 </div>
 
                                 <div class="form-group">
@@ -689,7 +690,7 @@
                                         <option value="Combination">Combination</option>
                                     </select>
 
-                                    
+
                                 </div>
 
                                 <div class="form-group">
@@ -701,7 +702,7 @@
                                         <option value="No">No</option>
                                     </select>
 
-                                    @if(Model.FYDoYouWantAnyPrivacyAnswer == "Yes")
+                                    @if (Model.FYDoYouWantAnyPrivacyAnswer == "Yes")
                                     {
                                         <div class="ques-note ques-note-active">
                                             <lable>Privay where note</lable>
@@ -730,7 +731,7 @@
                                         </div>
                                     }
 
-                                   
+
 
                                 </div>
 
@@ -756,24 +757,24 @@
                                     <option value="No">No</option>
                                 </select>
 
-                                @if(Model.FYDoYouHaveASideYardAnswer == "Yes")
+                                @if (Model.FYDoYouHaveASideYardAnswer == "Yes")
                                 {
                                     <div class="ques-note ques-note-active">
-                                    <label>Note</label>
-                                    <textarea class="form-control " rows="4" asp-for="FYDoYouHaveASideYardNotes"></textarea>
-                                    <span class="validation-message text-danger">This field is required</span>
-                                </div>
+                                        <label>Note</label>
+                                        <textarea class="form-control " rows="4" asp-for="FYDoYouHaveASideYardNotes"></textarea>
+                                        <span class="validation-message text-danger">This field is required</span>
+                                    </div>
                                 }
                                 else
                                 {
                                     <div class="ques-note">
-                                    <label>Note</label>
+                                        <label>Note</label>
                                         <textarea class="form-control " rows="4" asp-for="FYDoYouHaveASideYardNotes"></textarea>
-                                    <span class="validation-message text-danger">This field is required</span>
-                                </div>
+                                        <span class="validation-message text-danger">This field is required</span>
+                                    </div>
                                 }
 
-                                
+
                             </div>
 
                             <div class="form-group">
@@ -785,12 +786,13 @@
                                     <option value="30K-40K">$30K-$40K </option>
                                     <option value="40K-50K">$40K-$50K </option>
                                 </select>
-                               
+
                             </div>
 
                             <div class="form-group">
                                 <label>
-                                    When do you plan on starting your yard renovation? ASAP</label>
+                                    When do you plan on starting your yard renovation? ASAP
+                                </label>
                                 <select asp class="form-control" asp-for="FYWhenDoYouPlanOnStartingYourYardRenovationAnswer">
                                     <option value="3-6 months">3-6 months </option>
                                     <option value="12months">12months+</option>
@@ -904,7 +906,7 @@
                                 <div class="col-lg-4">
                                     <img src="@Model.DesignImagePath" />
                                 </div>
-                                
+
                             </div>
 
 
@@ -913,8 +915,50 @@
                 </div>
 
 
-               
-               
+
+
+            </div> <!-- .col-12 -->
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-12">
+
+
+                <div class="row align-items-center mb-2">
+                    <div class="col">
+                        <h2 class="h5 page-title">Packages (Main design package price: @Model.Price)</h2>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-12 mb-2">
+                    <div class="card shadow">
+
+                        <div class="card-body my-n2">
+
+                            @foreach (var item in Model.SubPackages)
+                            {
+                                <div class="form-group">
+                                    <h3>Upgrade to @item.Name</h3>
+                                    <span>@item.Name price: $ @item.Price</span>
+                                    <a class="btn btn-success" href="/Employee/Projects/ClientSubPackageAdd?ProjectId=@Model.Id&SubPackageId=@item.Id">Pay with apple pay</a>
+                                    <a class="btn btn-success" href="/Employee/Projects/ClientSubPackageAdd?ProjectId=@Model.Id&SubPackageId=@item.Id">Pay with new credit card</a>
+                                </div>
+
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
             </div> <!-- .col-12 -->
         </div>
 
@@ -962,7 +1006,7 @@
 
                             <div class="form-group">
                                 <label>Upload</label>
-                                <input type="file" multiple asp-for="DocumentFiles" class="form-control"/>
+                                <input type="file" multiple asp-for="DocumentFiles" class="form-control" />
                             </div>
 
                             <div class="row">
@@ -970,15 +1014,15 @@
                                 @foreach (var item in Model.DocumentLinks)
                                 {
                                     <div class="col-lg-4">
-                                       <div class="doc-file">
-                                           <a href="@item.ImgPath">
+                                        <div class="doc-file">
+                                            <a href="@item.ImgPath">
                                                 <i class="fa-solid fa-file"></i>
-                                           </a>
+                                            </a>
 
                                             <button type="button" class="img-delete-btn" data-id="@item.Id">
                                                 <i class="fa-solid fa-xmark"></i>
                                             </button>
-                                       </div>
+                                        </div>
                                     </div>
                                 }
 
@@ -1034,17 +1078,17 @@
                         </div>
                         <div class="card-body my-n2">
 
-                           <div class="form-group">
-                               <label>Design Status</label>
-                               <select class="form-control" asp-for="DesignStatus">
+                            <div class="form-group">
+                                <label>Design Status</label>
+                                <select class="form-control" asp-for="DesignStatus">
                                     <option value="Pending">Pending</option>
                                     <option value="Assigned">Assigned</option>
                                     <option value="Uploaded">Uploaded</option>
                                     <option value="Declined">Declined</option>
                                     <option value="Approved">Approved</option>
                                     <option value="Revision">Revision</option>
-                               </select>
-                           </div>
+                                </select>
+                            </div>
 
 
                         </div>
@@ -1053,12 +1097,12 @@
 
                 <div class="col-lg-12 mb-2">
                     <div class="card shadow">
-                       @* <div class="card-header">
-                            <strong class="card-title">Design Approval</strong>
-                            <a class="float-right small text-muted" href="#!">View all</a>
+                        @* <div class="card-header">
+                        <strong class="card-title">Design Approval</strong>
+                        <a class="float-right small text-muted" href="#!">View all</a>
                         </div>*@
                         <div class="card-body my-n2">
-                             
+
                             <button class="btn btn-primary submit-btn" type="button">Save Changes</button>
 
                         </div>
@@ -1073,11 +1117,9 @@
     </form>
 
 </div> <!-- .container-fluid -->
-
-
 @section Scripts {
     <script>
-        $(function(){
+        $(function () {
 
             $("#Status").val("@Model.Status");
             $("#YouWantADesignForWahtAreaAnswer").val("@Model.YouWantADesignForWahtAreaAnswer");
@@ -1116,18 +1158,16 @@
         });
 
 
-        $(document).on("change",".ques-select",function(){
-
-            
+        $(document).on("change", ".ques-select", function () {
 
 
-            if($(this).val() == "Yes" || $(this).val() == "Other" )
-            {
+
+
+            if ($(this).val() == "Yes" || $(this).val() == "Other") {
                 $(this).closest("div").find(".ques-note").show();
                 $(this).closest("div").find(".ques-note").addClass("show");
             }
-            else
-            {
+            else {
                 $(this).closest("div").find(".ques-note").hide();
                 $(this).closest("div").find(".ques-note").removeClass("show");
             }
@@ -1143,17 +1183,15 @@
 
 
 
-            items.each(function(i,e){
-                if($(e).find("textarea").val() == "")
-                {
+            items.each(function (i, e) {
+                if ($(e).find("textarea").val() == "") {
                     len = 1;
                 }
             });
 
-           
 
-            if(len == 0)
-            {
+
+            if (len == 0) {
                 $(".frm").submit();
             }
 

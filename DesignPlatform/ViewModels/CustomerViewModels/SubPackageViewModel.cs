@@ -10,6 +10,7 @@
         public string Description { get; set; }
         public int ProjectId { get; set; }
         public bool IsSubscripe { get; set; }
+        public decimal Price { get; set; }
         public List<string> Features { get; set; }        
 
     }

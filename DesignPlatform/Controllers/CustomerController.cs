@@ -56,7 +56,7 @@ namespace DesignPlatform.Controllers
                 DesignLink = !string.IsNullOrEmpty(i.DesignImagePath) ? AppHost.Url + i.DesignImagePath : "",
                 Notes = i.Notes,
                 ProjectMangerId = i.ProjectManagerId,
-                SubPackages = context.PackageSubPackages.Where(p=> p.PackageId == i.ProjectPackages.Select(x=> x.PackageId).FirstOrDefault() && !i.ProjectSubPackages.Any(x => x.SubPackageId == p.Id)).Select(p=> new SubPackageViewModel()
+                SubPackages = context.PackageSubPackages.Where(p=> p.PackageId == i.ProjectPackages.Select(x=> x.PackageId).FirstOrDefault() && !i.ProjectSubPackages.Any(x => x.SubPackageId == p.SubPackageId)).Select(p=> new SubPackageViewModel()
                 { 
                     Id = p.SubPackageId,
                     Name = p.SubPackage.Name,
@@ -134,7 +134,7 @@ namespace DesignPlatform.Controllers
 
             }
 
-            model.SubPackages = await context.PackageSubPackages.Where(p => p.PackageId == project.ProjectPackages.Select(x => x.PackageId).FirstOrDefault() && project.ProjectSubPackages.Any(x => x.SubPackageId == p.Id)).Select(p => new SubPackageViewModel()
+            model.SubPackages = await context.PackageSubPackages.Where(p => p.PackageId == project.ProjectPackages.Select(x => x.PackageId).FirstOrDefault() && project.ProjectSubPackages.Any(x => x.SubPackageId == p.SubPackageId)).Select(p => new SubPackageViewModel()
             {
                 Id = p.SubPackageId,
                 Name = p.SubPackage.Name,
