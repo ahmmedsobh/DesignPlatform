@@ -1,7 +1,9 @@
 ﻿using DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels;
 using DesignPlatform.Data;
 using DesignPlatform.Enums;
+using DesignPlatform.Extensions;
 using DesignPlatform.Helpers;
+using DesignPlatform.Helpers.CurrentUserService;
 using DesignPlatform.Helpers.UploadHelper;
 using DesignPlatform.Models;
 using DesignPlatform.ViewModels;
@@ -14,22 +16,27 @@ using Microsoft.EntityFrameworkCore;
 namespace DesignPlatform.Areas.Employee.Controllers
 {
     [Area("Employee")]
+    [AuthorizeRoles(Roles.ProjectManger)]
+
     public class ProjectsController : Controller
     {
         private readonly ApplicationDbContext context;
         private readonly IUploadHelper uploadHelper;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly ICurrentUserService currentUserService;
 
-        public ProjectsController(ApplicationDbContext context, IUploadHelper uploadHelper, UserManager<ApplicationUser> userManager)
+        public ProjectsController(ApplicationDbContext context, IUploadHelper uploadHelper, UserManager<ApplicationUser> userManager,ICurrentUserService currentUserService)
         {
             this.context = context;
             this.uploadHelper = uploadHelper;
             this.userManager = userManager;
+            this.currentUserService = currentUserService;
         }
 
         public async Task<IActionResult> Index(EmployeeProjectParamsViewModel model)
         {
-            IQueryable<Project> items = context.Projects;
+            var UserId = currentUserService.UserId;
+            IQueryable<Project> items = context.Projects.Where(i => i.ProjectManagerId == UserId);
 
             if (!string.IsNullOrEmpty(model.DesignerId))
             {
@@ -80,8 +87,9 @@ namespace DesignPlatform.Areas.Employee.Controllers
         public async Task<IActionResult> Appointments()
         {
             var today = DateTime.Now.Date;
+            var UserId = currentUserService.UserId;
 
-            var projects = await context.Projects.Where(i => i.ScheduleDate.Date >= today).Select(i => new EmployeeAppointmentsViewModel()
+            var projects = await context.Projects.Where(i => i.ScheduleDate.Date >= today && i.ProjectManagerId == UserId).Select(i => new EmployeeAppointmentsViewModel()
             {
                 title = $"{i.Client.FirstName} {i.Client.LastName}" ,
                 start = i.ScheduleDate.ToString(),
@@ -184,7 +192,14 @@ namespace DesignPlatform.Areas.Employee.Controllers
                 Inspirations = i.Images.Where(i => i.Type == (int)ImageType.Inspiration).Select(p =>  AppHost.Url + p.ImagePath ).ToList(),
                 DesignLinks = i.DesignDocs.Where(i => i.Type == (int)DocType.Design).Select(p => new ImageViewModel(){ Id = p.Id, ImgPath = AppHost.Url + p.DocPath } ).ToList(),
                 DocumentLinks = i.DesignDocs.Where(i => i.Type == (int)DocType.Doc).Select(p => new ImageViewModel() { Id = p.Id, ImgPath = AppHost.Url + p.DocPath }).ToList(),
+                DesignerId = i.DesignerId,
+
             }).FirstOrDefaultAsync();
+
+            if (project != null)
+            {
+                project.Designers = await Designers(project.DesignerId);
+            }
 
             return View(project);
         }
@@ -261,8 +276,10 @@ namespace DesignPlatform.Areas.Employee.Controllers
             project.DesignStatus = model.DesignStatus;
             project.DesignerNotes = model.DesignerNotes;
             project.Status = model.Status;
+            project.DesignerId = !string.IsNullOrEmpty(model.DesignerId) ? model.DesignerId : project.DesignerId;
 
-            if(model.DesignFiles != null)
+
+            if (model.DesignFiles != null)
             {
                 var DesignDocs = model.DesignFiles.Select(i => new DesignDoc() { Type = (int)DocType.Design, DocPath = uploadHelper.Upload(i, (int)FolderName.ProjectFile) });
                 foreach (var item in DesignDocs)
@@ -306,13 +323,13 @@ namespace DesignPlatform.Areas.Employee.Controllers
 
         async Task<SelectList> Designers(string SelectedValue = "")
         {
-            var designers = (await userManager.GetUsersInRoleAsync(Roles.Desinger.ToString())).Select(i => new DropdownViewModel<string>() 
+            var designers = (await userManager.GetUsersInRoleAsync(Roles.Desinger.ToString())).Select(i => new DropdownViewModel<string>()
             {
                 Value = i.Id,
-                Text = $"{i.FirstName} {i.LastName} - {i.DesignerProjects.Count}"
+                Text = $"{i.FirstName} {i.LastName}"
             });
 
-            return new SelectList(designers,nameof(DropdownViewModel<string>.Value), nameof(DropdownViewModel<string>.Text), SelectedValue);
+            return new SelectList(designers, nameof(DropdownViewModel<string>.Value), nameof(DropdownViewModel<string>.Text), SelectedValue);
 
         }
 

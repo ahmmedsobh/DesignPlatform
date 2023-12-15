@@ -1,7 +1,10 @@
 ﻿using DesignPlatform.Areas.Employee.ViewModels.EmployeeCustomerViewModels;
 using DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels;
 using DesignPlatform.Data;
+using DesignPlatform.Enums;
+using DesignPlatform.Extensions;
 using DesignPlatform.Helpers;
+using DesignPlatform.Helpers.CurrentUserService;
 using DesignPlatform.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,18 +12,24 @@ using Microsoft.EntityFrameworkCore;
 namespace DesignPlatform.Areas.Employee.Controllers
 {
     [Area("Employee")]
+    [AuthorizeRoles(Roles.ProjectManger)]
+
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext context;
+        private readonly ICurrentUserService currentUserService;
 
-        public CustomersController(ApplicationDbContext context)
+        public CustomersController(ApplicationDbContext context , ICurrentUserService currentUserService)
         {
             this.context = context;
+            this.currentUserService = currentUserService;
         }
 
         public async Task<IActionResult> Index(EmployeeCustomerParamsViewModel model)
         {
-            IQueryable<Project> items = context.Projects;
+            var UserId = currentUserService.UserId;
+
+            IQueryable<Project> items = context.Projects.Where(i=> i.ProjectManagerId == UserId);
 
             if (model.FromDate != DateTime.MinValue)
             {

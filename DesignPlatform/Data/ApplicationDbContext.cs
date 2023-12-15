@@ -32,5 +32,7 @@ namespace DesignPlatform.Data
         public DbSet<Country> Countries { get; set; }
         public DbSet<State> States { get; set; }
         public DbSet<Message> Messages { get; set; }
+        public DbSet<ProjectPortfolio> ProjectPortfolios { get; set; }
+        public DbSet<Review> Reviews { get; set; }
     }
 }

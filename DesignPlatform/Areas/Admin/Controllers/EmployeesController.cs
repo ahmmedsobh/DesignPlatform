@@ -11,10 +11,13 @@ using Microsoft.Extensions.Configuration.UserSecrets;
 using System.Security.Policy;
 using DesignPlatform.Areas.Admin.ViewModels.AdminEmployeesViewModels;
 using Microsoft.EntityFrameworkCore;
+using DesignPlatform.Extensions;
 
 namespace DesignPlatform.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AuthorizeRoles(Roles.Admin)]
+
     public class EmployeesController : Controller
     {
         private readonly ApplicationDbContext context;

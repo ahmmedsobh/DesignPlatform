@@ -8,10 +8,12 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using DesignPlatform.Areas.Admin.ViewModels.AdminCountryViewModels;
 using Microsoft.EntityFrameworkCore;
+using DesignPlatform.Extensions;
 
 namespace DesignPlatform.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AuthorizeRoles(Roles.Admin)]
     public class CountriesController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -31,7 +33,7 @@ namespace DesignPlatform.Areas.Admin.Controllers
             string Lang = "en";
 
 
-            var items = context.Countries.OrderByDescending(i => i.Date).Where(i=> i.IsActive);
+            var items = context.Countries.OrderByDescending(i => i.Date);
 
 
             #region Pagination

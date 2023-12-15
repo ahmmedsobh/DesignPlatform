@@ -1,0 +1,75 @@
+﻿@model DesignPlatform.Areas.Admin.ViewModels.AdminProjectPortfolioViewModels.AdminProjectPortfolioEditViewModel
+
+
+<!-- Start Project Details -->
+<div class="project-details">
+
+    <div class="header">
+        <h1>@Model.Name</h1>
+    </div>
+
+    <div class="container">
+
+
+        <div class="content">
+            <div class="img">
+                <img src="@Model.ImageUrl">
+            </div>
+
+            <div class="description">
+                <p>@Html.Raw(Model.Description)</p>
+            </div>
+            <div class="images">
+                <div class="row">
+
+                    @foreach(var item in Model.ImagesUrl)
+                    {
+                        <div class="col-lg-6">
+                            <img src="@item">
+                        </div>
+                    }
+
+                   
+                   
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+
+    <div class="more-projects">
+        <h2>More Projects</h2>
+
+        <div class="container">
+            <div class="row">
+
+                @foreach(var item in Model.Projects)
+                {
+                    <div class="col-lg-4">
+                        <div class="item">
+                            <img src="@item.ImageUrl">
+                            <h4>@item.Name</h4>
+                            <a href="/Home/ProjectDetails/@item.Id">View project</a>
+
+                        </div>
+                    </div>
+                }
+
+               
+
+               
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+<!-- End Project Details -->

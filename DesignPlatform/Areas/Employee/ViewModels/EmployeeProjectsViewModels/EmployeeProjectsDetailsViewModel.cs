@@ -1,5 +1,6 @@
 ﻿using DesignPlatform.ViewModels.CustomerViewModels;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels
 {
@@ -134,6 +135,9 @@ namespace DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels
         public IFormFile[] DesignFiles { get; set; }
         public List<ImageViewModel> DocumentLinks { get; set; }
         public List<ImageViewModel> DesignLinks { get; set; }
+
+        public SelectList Employees { get; set; }
+        public SelectList Designers { get; set; }
 
     }
 }

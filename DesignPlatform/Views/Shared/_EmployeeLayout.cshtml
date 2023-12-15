@@ -64,9 +64,9 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Profile</a>
-              <a class="dropdown-item" href="#">Settings</a>
-              <a class="dropdown-item" href="#">Activities</a>
+                <a class="dropdown-item" href="/Employee/Accounts/Profile">Profile</a>
+                <a class="dropdown-item" href="/Employee/Accounts/Logout">Logout</a>
+             
             </div>
           </li>
         </ul>
@@ -277,11 +277,39 @@
     <script src='~/dashboard/js/uppy.min.js'></script>
     <script src='~/dashboard/js/quill.min.js'></script>
 
+
+
     <!-- Icons -->
     <script src="~/assets/js/all.js"></script>
 
+    @*JQuery Validation*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+    @*SignalR*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+
     @*Event Full Calender*@
     <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.9/index.global.min.js'></script>
+
+
+
+    <!-- Select 2 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+
+    @*ckeditor*@
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
+
+    <script>
+        $(function () {
+            $('select:not(.normal)').each(function () {
+                $(this).select2({
+                    dropdownParent: $(this).parent(),
+                    width: 'resolve'
+                });
+            });
+        });
+    </script>
     
    @* <script>
       $('.select2').select2(

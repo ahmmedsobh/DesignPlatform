@@ -18,10 +18,10 @@ namespace DesignPlatform.ViewModels.AccountViewModels
         public int CountryId { get; set; }
         public int StateId { get; set; }
 
-        [Remote(controller: "Account", action: nameof(AccountController.EmailExists))]
+        [Remote(areaName:"Admin", controller: "Accounts", action: nameof(AccountController.EmailExists))]
         public string Email { get; set; }
 
-        [Remote(controller: "Account", action: nameof(AccountController.PhoneExists))]
+        [Remote(areaName: "Admin", controller: "Accounts", action: nameof(AccountController.PhoneExists))]
         public string Phone { get; set; }
 
         public SelectList Countries { get; set; }

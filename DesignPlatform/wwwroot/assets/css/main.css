@@ -301,6 +301,7 @@ body {
 
 .slider .content .slide img{
     max-width: 100%;
+    width:100%;
 }
 
 .slider .content .slide .text {
@@ -1009,5 +1010,71 @@ footer ul:not(.link-list) li a {
             }
 
 /* End Customer Chat */
+
+
+/* Start project details */
+
+.project-details .header {
+    background-color: var(--main-color);
+}
+
+    .project-details .header h1 {
+        text-align: center;
+        color: var(--second-color);
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+.project-details .content .img {
+    text-align: center;
+}
+
+    .project-details .content .img img {
+        width: 80%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+.project-details .content .images {
+    padding-bottom: 80px;
+}
+
+    .project-details .content .images img {
+        width: 100%;
+    }
+
+
+.project-details .more-projects {
+    background-color: var(--main-color);
+    padding-top: 60px;
+}
+
+    .project-details .more-projects h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .project-details .more-projects img {
+        width: 100%;
+    }
+
+    .project-details .more-projects .item {
+        text-align: center;
+        background-color: white;
+        padding-bottom: 20px;
+    }
+
+        .project-details .more-projects .item h4 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .project-details .more-projects .item a {
+            text-decoration: none;
+            color: var(--second-color);
+        }
+
+/* End project details */
+
 
 

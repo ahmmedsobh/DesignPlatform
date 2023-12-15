@@ -10,10 +10,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using DesignPlatform.Extensions;
 
 namespace DesignPlatform.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AuthorizeRoles(Roles.Admin)]
+
     public class ProjectsController : Controller
     {
         private readonly ApplicationDbContext context;
@@ -71,7 +74,7 @@ namespace DesignPlatform.Areas.Admin.Controllers
             var ViewModel = new EmployeeProjectViewModel();
 
             ViewModel.Projects = itemsToDisplay;
-            ViewModel.Designers = await Designers();
+            ViewModel.Designers = await DesignersWithProjectsCount();
 
 
             return View(ViewModel);
@@ -184,7 +187,15 @@ namespace DesignPlatform.Areas.Admin.Controllers
                 Inspirations = i.Images.Where(i => i.Type == (int)ImageType.Inspiration).Select(p => AppHost.Url + p.ImagePath).ToList(),
                 DesignLinks = i.DesignDocs.Where(i => i.Type == (int)DocType.Design).Select(p => new ImageViewModel() { Id = p.Id, ImgPath = AppHost.Url + p.DocPath }).ToList(),
                 DocumentLinks = i.DesignDocs.Where(i => i.Type == (int)DocType.Doc).Select(p => new ImageViewModel() { Id = p.Id, ImgPath = AppHost.Url + p.DocPath }).ToList(),
+                ProjectManagerId = i.ProjectManagerId,
+                DesignerId = i.DesignerId,
             }).FirstOrDefaultAsync();
+
+            if(project != null)
+            {
+                project.Designers = await Designers(project.DesignerId);
+                project.Employees = await Employees(project.ProjectManagerId);
+            }
 
             return View(project);
         }
@@ -261,6 +272,9 @@ namespace DesignPlatform.Areas.Admin.Controllers
             project.DesignStatus = model.DesignStatus;
             project.DesignerNotes = model.DesignerNotes;
             project.Status = model.Status;
+            project.ProjectManagerId = !string.IsNullOrEmpty(model.ProjectManagerId)  ? model.ProjectManagerId : project.ProjectManagerId;
+            project.DesignerId = !string.IsNullOrEmpty(model.DesignerId)  ? model.DesignerId : project.DesignerId;
+
 
             if (model.DesignFiles != null)
             {
@@ -283,6 +297,8 @@ namespace DesignPlatform.Areas.Admin.Controllers
             context.Update(project);
             await context.SaveChangesAsync();
 
+            
+
             return RedirectToAction(nameof(Details), new { Id = model.Id });
 
 
@@ -304,12 +320,38 @@ namespace DesignPlatform.Areas.Admin.Controllers
 
         #region Functions
 
+        async Task<SelectList> DesignersWithProjectsCount(string SelectedValue = "")
+        {
+            var DesignerRole = ((int)Roles.Desinger).ToString();
+
+            var designers = await context.Users.Where(i=> i.MainRoles.Contains(DesignerRole)).Select(i => new DropdownViewModel<string>()
+            {
+                Value = i.Id,
+                Text = $"{i.FirstName} {i.LastName} - {i.DesignerProjects.Count}"
+            }).ToListAsync();
+
+            return new SelectList(designers, nameof(DropdownViewModel<string>.Value), nameof(DropdownViewModel<string>.Text), SelectedValue);
+
+        }
+
         async Task<SelectList> Designers(string SelectedValue = "")
         {
             var designers = (await userManager.GetUsersInRoleAsync(Roles.Desinger.ToString())).Select(i => new DropdownViewModel<string>()
             {
                 Value = i.Id,
-                Text = $"{i.FirstName} {i.LastName} - {i.DesignerProjects.Count}"
+                Text = $"{i.FirstName} {i.LastName}"
+            });
+
+            return new SelectList(designers, nameof(DropdownViewModel<string>.Value), nameof(DropdownViewModel<string>.Text), SelectedValue);
+
+        }
+
+        async Task<SelectList> Employees(string SelectedValue = "")
+        {
+            var designers = (await userManager.GetUsersInRoleAsync(Roles.ProjectManger.ToString())).Select(i => new DropdownViewModel<string>()
+            {
+                Value = i.Id,
+                Text = $"{i.FirstName} {i.LastName}"
             });
 
             return new SelectList(designers, nameof(DropdownViewModel<string>.Value), nameof(DropdownViewModel<string>.Text), SelectedValue);

@@ -6,11 +6,11 @@ namespace DesignPlatform.ViewModels.AccountViewModels
 {
     public class CustomerChangePasswordViewModel
     {
-        [Remote(controller: "Account", action: nameof(AccountController.OldPasswordValidation))]
+        [Remote(areaName: "Admin", controller: "Accounts", action: nameof(AccountController.OldPasswordValidation))]
         public string OldPassword { get; set; }
 
         [Required]
-        [Remote(controller: "Account", action: nameof(AccountController.NewPasswordValidation),AdditionalFields = nameof(OldPassword))]
+        [Remote(areaName: "Admin", controller: "Accounts", action: nameof(AccountController.NewPasswordValidation),AdditionalFields = nameof(OldPassword))]
         public string NewPassword { get; set; }
 
 

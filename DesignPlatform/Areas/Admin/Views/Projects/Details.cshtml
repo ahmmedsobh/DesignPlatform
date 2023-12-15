@@ -9,8 +9,8 @@
 
     <div class="employee-chat-btns">
 
-        <a href="/Employee/Messages/IntChat?SelectedUser=@Model.DesignerId">Int Chat</a>
-        <a href="/Employee/Messages/Index?SelectedUser=@Model.ClientId">Chat</a>
+        <a href="/Admin/Messages/IntChat?Id=@Model.Id">Int Chat</a>
+        <a href="/Admin/Messages/Index?Id=@Model.Id">Chat</a>
 
     </div>
 
@@ -26,6 +26,27 @@
                     </div>
 
                 </div>
+
+                <div class="col-lg-12 mb-2">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <strong class="card-title">Employee Assignment</strong>
+                            @*<a class="float-right small text-muted" href="#!">View all</a>*@
+                        </div>
+                        <div class="card-body my-n2">
+
+                            <div class="form-group">
+                                <label>Employees</label>
+                                <select class="form-control" asp-for="ProjectManagerId" asp-items="@Model.Employees">
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
                 <div class="col-lg-12 mb-2">
                     <div class="card shadow">
                         <div class="card-header">
@@ -932,7 +953,25 @@
 
                 </div>
 
+                <div class="col-lg-12 mb-2">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <strong class="card-title">Designer Assignment</strong>
+                            @*<a class="float-right small text-muted" href="#!">View all</a>*@
+                        </div>
+                        <div class="card-body my-n2">
 
+                            <div class="form-group">
+                                <label>Designers</label>
+                                <select class="form-control" asp-for="DesignerId" asp-items="@Model.Designers">
+                                    
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="col-lg-12 mb-2">
                     <div class="card shadow">

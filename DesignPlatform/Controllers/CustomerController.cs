@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DesignPlatform.Controllers
 {
-    //[AuthorizeRoles/*(Roles.Client)*/]
+    [AuthorizeRoles(Roles.Client)]
     public class CustomerController : Controller
     {
         private readonly ApplicationDbContext context;

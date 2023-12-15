@@ -7,10 +7,13 @@ using DesignPlatform.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using DesignPlatform.Extensions;
 
 namespace DesignPlatform.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AuthorizeRoles(Roles.Admin)]
+
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext context;

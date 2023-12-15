@@ -601,6 +601,58 @@ namespace DesignPlatform.Data.Migrations
                     b.ToTable("ProjectPackages");
                 });
 
+            modelBuilder.Entity("DesignPlatform.Models.ProjectPortfolio", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProjectPortfolios");
+                });
+
+            modelBuilder.Entity("DesignPlatform.Models.ProjectPortfolioImage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProjectPortfolioId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjectPortfolioId");
+
+                    b.ToTable("ProjectPortfolioImage");
+                });
+
             modelBuilder.Entity("DesignPlatform.Models.ProjectSubPackage", b =>
                 {
                     b.Property<int>("Id")
@@ -627,6 +679,34 @@ namespace DesignPlatform.Data.Migrations
                     b.HasIndex("SubPackageId");
 
                     b.ToTable("ProjectSubPackages");
+                });
+
+            modelBuilder.Entity("DesignPlatform.Models.Review", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Reviews");
                 });
 
             modelBuilder.Entity("DesignPlatform.Models.Setting", b =>
@@ -1003,6 +1083,17 @@ namespace DesignPlatform.Data.Migrations
                     b.Navigation("Project");
                 });
 
+            modelBuilder.Entity("DesignPlatform.Models.ProjectPortfolioImage", b =>
+                {
+                    b.HasOne("DesignPlatform.Models.ProjectPortfolio", "ProjectPortfolio")
+                        .WithMany("Images")
+                        .HasForeignKey("ProjectPortfolioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProjectPortfolio");
+                });
+
             modelBuilder.Entity("DesignPlatform.Models.ProjectSubPackage", b =>
                 {
                     b.HasOne("DesignPlatform.Models.Project", "Project")
@@ -1137,6 +1228,11 @@ namespace DesignPlatform.Data.Migrations
                     b.Navigation("ProjectPackages");
 
                     b.Navigation("ProjectSubPackages");
+                });
+
+            modelBuilder.Entity("DesignPlatform.Models.ProjectPortfolio", b =>
+                {
+                    b.Navigation("Images");
                 });
 
             modelBuilder.Entity("DesignPlatform.Models.ProjectSubPackage", b =>

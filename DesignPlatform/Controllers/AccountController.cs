@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.CompilerServices;
 
 namespace DesignPlatform.Controllers
@@ -162,7 +163,29 @@ namespace DesignPlatform.Controllers
 
                 if(result.Succeeded)
                 {
-                    return Redirect("/customer/dashboard");
+
+                    var AdminRole = ((int)Roles.Admin).ToString();
+                    var CustomerRole = ((int)Roles.Client).ToString();
+                    var EmployeeRole = ((int)Roles.ProjectManger).ToString();
+                    var DesignerRole = ((int)Roles.Desinger).ToString();
+
+                    if(user.MainRoles.Contains(AdminRole))
+                    {
+                        return Redirect("/Admin");
+                    }
+                    else if (user.MainRoles.Contains(CustomerRole))
+                    {
+                        return Redirect("/customer/dashboard");
+                    }
+                    else if (user.MainRoles.Contains(EmployeeRole))
+                    {
+                        return Redirect("/Employee");
+                    }
+                    else if (user.MainRoles.Contains(DesignerRole))
+                    {
+                        return Redirect("/Designer");
+                    }
+
                 }
 
 
@@ -179,6 +202,7 @@ namespace DesignPlatform.Controllers
         }
 
         #region Functions
+        [AllowAnonymous]
         async Task<SelectList> Countries(int SelectedValue = 0)
         {
             var countries = await context.Countries.Where(i => i.IsActive).Select(i => new DropdownViewModel<int>()
@@ -190,6 +214,8 @@ namespace DesignPlatform.Controllers
             return new SelectList(countries, nameof(DropdownViewModel<int>.Value), nameof(DropdownViewModel<int>.Text), SelectedValue);
         }
 
+        [AllowAnonymous]
+
         async Task<SelectList> States(int SelectedValue = 0)
         {
             var states = await context.States.Where(i => i.IsActive).Select(i => new DropdownViewModel<int>()
@@ -200,6 +226,8 @@ namespace DesignPlatform.Controllers
 
             return new SelectList(states, nameof(DropdownViewModel<int>.Value), nameof(DropdownViewModel<int>.Text), SelectedValue);
         }
+
+        [AllowAnonymous]
 
         public async Task<IActionResult> OldPasswordValidation(string OldPassword)
         {
@@ -227,6 +255,8 @@ namespace DesignPlatform.Controllers
 
         }
 
+        [AllowAnonymous]
+
         public async Task<IActionResult> NewPasswordValidation(string OldPassword)
         {
             var user = await currentUserService.GetUser();
@@ -246,6 +276,8 @@ namespace DesignPlatform.Controllers
 
         }
 
+        [AllowAnonymous]
+
         public async Task<IActionResult> LoginEmailValidation(string Email)
         {
             var user = await context.Users.FirstOrDefaultAsync(i=> i.Email == Email);
@@ -258,6 +290,8 @@ namespace DesignPlatform.Controllers
             return Json(true);
 
         }
+
+        [AllowAnonymous]
 
         public async Task<IActionResult> LoginPasswordValidation(string Email,string Password)
         {
@@ -279,6 +313,8 @@ namespace DesignPlatform.Controllers
 
         }
 
+        [AllowAnonymous]
+
         public async Task<IActionResult> EmailExists(string Email)
         {
             var userId = currentUserService.UserId;
@@ -292,6 +328,8 @@ namespace DesignPlatform.Controllers
             return Json(true);
 
         }
+
+        [AllowAnonymous]
 
         public async Task<IActionResult> PhoneExists(string Phone)
         {

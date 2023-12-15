@@ -1,4 +1,6 @@
 ﻿using DesignPlatform.Data;
+using DesignPlatform.Enums;
+using DesignPlatform.Extensions;
 using DesignPlatform.Helpers.CurrentUserService;
 using DesignPlatform.Models;
 using DesignPlatform.ViewModels.MessagesViewModels;
@@ -9,6 +11,8 @@ using System.Collections.Immutable;
 
 namespace DesignPlatform.Controllers
 {
+    [AuthorizeRoles(Roles.Client)]
+
     public class MessagesController : Controller
     {
         private readonly ApplicationDbContext context;

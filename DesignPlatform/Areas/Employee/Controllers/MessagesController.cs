@@ -1,5 +1,6 @@
 ﻿using DesignPlatform.Data;
 using DesignPlatform.Enums;
+using DesignPlatform.Extensions;
 using DesignPlatform.Helpers.CurrentUserService;
 using DesignPlatform.Models;
 using DesignPlatform.ViewModels.MessagesViewModels;
@@ -9,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 namespace DesignPlatform.Areas.Employee.Controllers
 {
     [Area("Employee")]
+    [AuthorizeRoles(Roles.ProjectManger)]
+
     public class MessagesController : Controller
     {
         private readonly ApplicationDbContext context;

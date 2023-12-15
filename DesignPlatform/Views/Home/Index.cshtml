@@ -122,55 +122,23 @@
    
 <div class="swiper mySwiper">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <div class="slide">
-                        <img src="~/assets/imgs/team-1.png">
-        <div class="text">
-          <h2>Project Name</h2>
-          <a href="#">View Project</a>
-        </div>
-      </div>
-    </div>
 
-    <div class="swiper-slide">
-      <div class="slide">
-                        <img src="~/assets/imgs/team-1.png">
-        <div class="text">
-          <h2>Project Name</h2>
-          <a href="#">View Project</a>
-        </div>
-      </div>
-    </div>
+      @foreach(var item in Model.Projects)
+        {
+            <div class="swiper-slide">
+                <div class="slide">
+                    <img src="@item.ImageUrl">
+                    <div class="text">
+                        <h2>@item.Name</h2>
+                                <a href="/Home/ProjectDetails/@item.Id">View Project</a>
+                    </div>
+                </div>
+            </div>
+        }
 
-    <div class="swiper-slide">
-      <div class="slide">
-                        <img src="~/assets/imgs/team-1.png">
-        <div class="text">
-          <h2>Project Name</h2>
-          <a href="#">View Project</a>
-        </div>
-      </div>
-    </div>
+   
 
-    <div class="swiper-slide">
-      <div class="slide">
-                        <img src="~/assets/imgs/team-1.png">
-        <div class="text">
-          <h2>Project Name</h2>
-          <a href="#">View Project</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="swiper-slide">
-      <div class="slide">
-                        <img src="~/assets/imgs/team-1.png">
-        <div class="text">
-          <h2>Project Name</h2>
-          <a href="#">View Project</a>
-        </div>
-      </div>
-    </div>
+   
 
    
   </div>
@@ -332,36 +300,23 @@
     
 <div class="swiper ReviewsSwiper" style="height: 500px;">
   <div class="swiper-wrapper">
-    <div class="swiper-slide">
-      <div class="slide">
-        <i class="fa-solid fa-quote-right"></i>
-        <div class="text">
-          <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, voluptatibus culpa? Eveniet fugit, exercitationem quidem reprehenderit ad sed doloribus, beatae quo amet aliquam enim natus. Quos esse autem inventore necessitatibus.</p>
-          <h5>Customer Name</h5>
-        </div>
-      </div>
-    </div>
 
-    <div class="swiper-slide">
-      <div class="slide">
-        <i class="fa-solid fa-quote-right"></i>
-        <div class="text">
-          <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, voluptatibus culpa? Eveniet fugit, exercitationem quidem reprehenderit ad sed doloribus, beatae quo amet aliquam enim natus. Quos esse autem inventore necessitatibus.</p>
-          <h5>Customer Name</h5>
-        </div>
-      </div>
-    </div>
+      @foreach(var item in Model.Reviews)
+        {
+            <div class="swiper-slide">
+                <div class="slide">
+                    <i class="fa-solid fa-quote-right"></i>
+                    <div class="text">
+                        <p>@item.Description</p>
+                        <h5>@item.Name</h5>
+                    </div>
+                </div>
+            </div>
+        }
 
-    <div class="swiper-slide">
-      <div class="slide">
-        <i class="fa-solid fa-quote-right"></i>
-        <div class="text">
-          <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, voluptatibus culpa? Eveniet fugit, exercitationem quidem reprehenderit ad sed doloribus, beatae quo amet aliquam enim natus. Quos esse autem inventore necessitatibus.</p>
-          <h5>Customer Name</h5>
-        </div>
-      </div>
-    </div>
-    
+   
+
+   
 
    
     

@@ -930,6 +930,25 @@
 
                 </div>
 
+                <div class="col-lg-12 mb-2">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <strong class="card-title">Designer Assignment</strong>
+                            @*<a class="float-right small text-muted" href="#!">View all</a>*@
+                        </div>
+                        <div class="card-body my-n2">
+
+                            <div class="form-group">
+                                <label>Designers</label>
+                                <select class="form-control" asp-for="DesignerId" asp-items="@Model.Designers">
+                                </select>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
 
 
                 <div class="col-lg-12 mb-2">

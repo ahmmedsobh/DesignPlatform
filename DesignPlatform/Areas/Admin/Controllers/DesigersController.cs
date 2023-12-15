@@ -8,10 +8,13 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using DesignPlatform.Extensions;
 
 namespace DesignPlatform.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [AuthorizeRoles(Roles.Admin)]
+
     public class DesigersController : Controller
     {
         private readonly ApplicationDbContext context;

@@ -1,5 +1,8 @@
-﻿using DesignPlatform.Data;
+﻿using DesignPlatform.Areas.Admin.ViewModels.AdminProjectPortfolioViewModels;
+using DesignPlatform.Areas.Admin.ViewModels.AdminReviewViewModels;
+using DesignPlatform.Data;
 using DesignPlatform.Enums;
+using DesignPlatform.Extensions;
 using DesignPlatform.Helpers;
 using DesignPlatform.Models;
 using DesignPlatform.ViewModels.CustomerHomeViewModels;
@@ -10,7 +13,8 @@ using System.Diagnostics;
 
 namespace DesignPlatform.Controllers
 {
-	public class HomeController : Controller
+
+    public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext context;
@@ -38,6 +42,21 @@ namespace DesignPlatform.Controllers
 					ReviewsCount = 250,
 					Features = p.PackageFeatures.Select(f=> f.Name).ToList()
 				}).ToList(),
+
+				Projects = context.ProjectPortfolios.Where(i=> i.IsActive).Select(i=> new AdminProjectPortfolioEditViewModel()
+				{
+					Id = i.Id,
+					Name = i.Name,
+					ImageUrl = AppHost.Url + i.ImagePath,
+
+				}).ToList(),
+
+				Reviews = context.Reviews.Where(i=> i.IsActive).Select(i=> new AdminReviewEditViewModel()
+				{
+					Name = i.Name,
+					Description = i.Description,
+				}).ToList()
+
 			}).FirstOrDefaultAsync();
 
 			
@@ -147,6 +166,27 @@ namespace DesignPlatform.Controllers
 
 			return RedirectToAction(nameof(Package),new {Id = model.PackageId });
 
+		}
+
+		public async Task<IActionResult> ProjectDetails(int Id)
+		{
+			var item = await context.ProjectPortfolios.Where(i => i.Id == Id).Select(i => new AdminProjectPortfolioEditViewModel()
+			{
+				Id = i.Id,
+				Name = i.Name,
+				Description = i.Description,
+				ImageUrl = AppHost.Url + i.ImagePath,
+				ImagesUrl = i.Images.Select(i => AppHost.Url + i.ImagePath).ToList(),
+				Projects = context.ProjectPortfolios.Where(i=> i.IsActive).Take(3).Select(i=>  new AdminProjectPortfolioEditViewModel()
+				{
+					Id = i.Id,
+					Name = i.Name,
+					ImageUrl = AppHost.Url + i.ImagePath
+				}).ToList()
+
+			}).FirstOrDefaultAsync();
+
+			return View(item);
 		}
 
 		public IActionResult Privacy()

@@ -1,0 +1,150 @@
+﻿@model DesignPlatform.ViewModels.MessagesViewModels.MessagesViewModel
+
+
+
+
+<!-- Start dashboard -->
+<div class="customer-chat">
+    <div class="container">
+        <div class="row">
+
+
+            <div class="col-lg-3">
+                <div class="users">
+
+                    @foreach (var item in Model.Users)
+                    {
+                        if (item.Selected)
+                        {
+                            <a href="/Designer/Messages/Index?SelectedUser=@item.Id" class="user active">
+                                <div>
+                                    <h5>@item.Name</h5>
+                                    <p>@item.LastMessage</p>
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Designer/Messages/Index?SelectedUser=@item.Id" class="user">
+                                <div>
+                                    <h5>@item.Name</h5>
+                                    <p>@item.LastMessage</p>
+                                </div>
+                            </a>
+                        }
+
+                    }
+
+
+
+
+
+
+                </div>
+            </div>
+
+            <div class="col-lg-9">
+                <div class="messages-box">
+
+                    <div class="header">
+                        <h5>@Model.ReceiverName</h5>
+                    </div>
+
+                    <div class="messages">
+
+                        @foreach (var item in Model.Messages)
+                        {
+                            if (item.IsMyMessage)
+                            {
+                                <div class="message sent-message">
+                                    <p>@item.Message</p>
+                                    <span>@item.Date @item.Time</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="message recieve-message">
+                                    <p>@item.Message</p>
+                                    <span>@item.Date @item.Time</span>
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+                    <div class="footer">
+
+                        @if (!Model.NoSelectedUser)
+                        {
+                            <div class="send-message-box">
+                                <input class="messageInpt">
+                                <button type="button" class="sendBtn" data-receiverId="@Model.ReceiverId">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+</div>
+<!-- End dashboard -->
+@section Scripts {
+    <script>
+
+        var connection = new signalR.HubConnectionBuilder().withUrl("/chatHub").build();
+
+        connection.on("ReceiveMessage", function (message, date, time, senderId) {
+            var messge = ``;
+            if (senderId == "@Model.SenderId") {
+                messge = `
+                                        <div class="message sent-message">
+                                            <p>${message}</p>
+                                            <span>${date} ${time}</span>
+                                        </div>
+                                `;
+
+            }
+            else {
+
+                messge = `
+                                    <div class="message recieve-message">
+                                        <p>${message}</p>
+                                        <span>${date} ${time}</span>
+                                    </div>
+                                 `;
+
+            }
+
+            $(".messages").append(messge);
+            $(".messages").scrollTop($(".messages")[0].scrollHeight);
+        });
+
+        $(".sendBtn").click(function () {
+            var receiverId = $(this).attr("data-receiverId");
+            var message = $(".messageInpt").val();
+            connection.invoke("SendMessage", receiverId, message);
+            $(".messageInpt").val("").focus();
+        });
+
+        connection.start().then(function () {
+            console.log("Connected!");
+        }).catch(function (err) {
+            console.error(err.toString());
+        });
+
+        $(function () {
+
+            $(".messages").scrollTop($(".messages")[0].scrollHeight);
+
+        })
+
+    </script>
+}
