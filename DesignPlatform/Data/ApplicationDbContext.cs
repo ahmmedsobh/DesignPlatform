@@ -34,5 +34,6 @@ namespace DesignPlatform.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<ProjectPortfolio> ProjectPortfolios { get; set; }
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<ContactUs> ContactUs { get; set; }
     }
 }

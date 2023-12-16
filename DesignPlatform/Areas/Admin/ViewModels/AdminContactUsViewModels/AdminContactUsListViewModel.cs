@@ -1,0 +1,10 @@
+﻿namespace DesignPlatform.Areas.Admin.ViewModels.AdminContactUsViewModels
+{
+    public class AdminContactUsListViewModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+    }
+}

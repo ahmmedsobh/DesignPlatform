@@ -1,5 +1,7 @@
-﻿using DesignPlatform.Areas.Admin.ViewModels.AdminProjectPortfolioViewModels;
+﻿using DesignPlatform.Areas.Admin.ViewModels.AdminContactUsViewModels;
+using DesignPlatform.Areas.Admin.ViewModels.AdminProjectPortfolioViewModels;
 using DesignPlatform.Areas.Admin.ViewModels.AdminReviewViewModels;
+using DesignPlatform.Areas.Admin.ViewModels.AdminSettingViewModels;
 using DesignPlatform.Data;
 using DesignPlatform.Enums;
 using DesignPlatform.Extensions;
@@ -189,7 +191,55 @@ namespace DesignPlatform.Controllers
 			return View(item);
 		}
 
-		public IActionResult Privacy()
+        public async Task<IActionResult> ContactUs()
+		{
+			return View();
+		}
+
+		[HttpPost]
+        public async Task<IActionResult> ContactUs(AdminContactUsAddViewModel model)
+		{
+			if(ModelState.IsValid)
+			{
+				var contact = new ContactUs()
+				{
+					Email = model.Email,
+					Phone = model.Phone,
+					Name = model.Name,
+					Message = model.Message,
+					Date = DateTime.Now,
+				};
+
+				 
+				await context.AddAsync(contact);
+				var result = await context.SaveChangesAsync() > 0 ;
+
+				if(result)
+				{
+					model.SuccessMessage = "Your Message sent, thank you";
+				}
+
+
+				return View(model);
+
+	
+            }
+
+            return View(model);
+
+        }
+
+
+        public async Task<IActionResult> AboutUs()
+        {
+			var setting = await context.Settings.FirstOrDefaultAsync();
+
+
+            return View(setting);
+        }
+
+
+        public IActionResult Privacy()
 		{
 			return View();
 		}

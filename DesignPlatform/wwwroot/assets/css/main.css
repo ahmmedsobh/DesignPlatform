@@ -1076,5 +1076,65 @@ footer ul:not(.link-list) li a {
 
 /* End project details */
 
+/* Start Contact Us  */
+
+.contact-us .header {
+    background-color: var(--main-color);
+}
+
+    .contact-us .header h1 {
+        text-align: center;
+        color: var(--second-color);
+        padding-top: 55px;
+        padding-bottom: 55px;
+    }
+
+.contact-us .contact-address {
+    height: 100px;
+    background-color: var(--main-color);
+    margin-top: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+    .contact-us .contact-address .row {
+        align-items: center;
+        height: 100%;
+    }
+
+    .contact-us .contact-address a {
+        text-decoration: none;
+        color: var(--dark-color);
+    }
+
+        .contact-us .contact-address a svg {
+            color: var(--second-color);
+            margin-right: 5px;
+        }
+
+.contact-us .contact-form {
+    background-color: var(--main-color);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+    .contact-us .contact-form .col-lg-4 {
+        margin-bottom: 20px;
+    }
+
+    .contact-us .contact-form input, .contact-us .contact-form textarea {
+        border-radius: 0;
+    }
+
+    .contact-us .contact-form .buttons {
+        padding-top: 20px;
+        display: flex;
+        justify-content: right;
+    }
+
+
+
+/* End Contact Us  */
 
 
