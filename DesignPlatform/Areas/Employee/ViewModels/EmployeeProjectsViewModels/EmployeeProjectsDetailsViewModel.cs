@@ -32,6 +32,11 @@ namespace DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels
         public int? StateId { get; set; }
         public string StateName { get; set; }
 
+        public decimal SubPackagePrice { get; set; }
+        public decimal TotalPrice => Price + SubPackagePrice;
+        public string SubPackagesAsString { get; set; }
+
+
         public string YouWantADesignForWahtAreaAnswer { get; set; }
         public string YouWantADesignForWahtAreaNotes { get; set; }
 

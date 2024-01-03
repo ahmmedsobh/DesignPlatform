@@ -18,6 +18,8 @@ namespace DesignPlatform.Models
         public string ProjectManagerId { get; set; }
         public string DesignerId { get; set; }
 
+        public bool ConfirmPayment { get; set; }
+
         public string YouWantADesignForWahtAreaAnswer { get; set; }
         public string YouWantADesignForWahtAreaNotes { get; set; }
 

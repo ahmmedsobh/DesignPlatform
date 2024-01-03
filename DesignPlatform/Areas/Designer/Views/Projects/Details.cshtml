@@ -270,7 +270,7 @@
                                         <option value="Walkway">Walkway</option>
                                         <option value="Other ">Other </option>
                                     </select>
-                                    @if (Model.WouldYouLikeToAddHardscapeAnswer == "Other")
+                                    @if (!string.IsNullOrEmpty(Model.WouldYouLikeToAddHardscapeAnswer))
                                     {
                                         <div class="ques-note ques-note-active">
                                             <label>Note</label>
@@ -297,6 +297,22 @@
                                         <option value="Minimal">Minimal</option>
                                         <option value="In between">In between</option>
                                     </select>
+                                    @if (!string.IsNullOrEmpty(Model.RegardingTheAmountOfPlantsAnswer))
+                                    {
+                                        <div class="ques-note ques-note-active">
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="RegardingTheAmountOfPlantsNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="ques-note">
+                                            <label>Note</label>
+                                            <textarea class="form-control " rows="4" asp-for="RegardingTheAmountOfPlantsNotes"></textarea>
+                                            <span class="validation-message text-danger">This field is required</span>
+                                        </div>
+                                    }
                                 </div>
 
                                 <div class="form-group">
@@ -1105,7 +1121,7 @@
 
 
 
-            if ($(this).val() == "Yes" || $(this).val() == "Other") {
+            if ($(this).val() == "Yes" || $(this).val() == "Other" || $(this).val() == "In between" || $(this).val() == "Minimal" || $(this).val() == "Lush" || $(this).val() == "Walkway" || $(this).val() == "Driveway") {
                 $(this).closest("div").find(".ques-note").show();
                 $(this).closest("div").find(".ques-note").addClass("show");
             }

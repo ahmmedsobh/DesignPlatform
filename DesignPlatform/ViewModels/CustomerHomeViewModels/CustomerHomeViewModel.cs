@@ -1,5 +1,6 @@
 ﻿using DesignPlatform.Areas.Admin.ViewModels.AdminProjectPortfolioViewModels;
 using DesignPlatform.Areas.Admin.ViewModels.AdminReviewViewModels;
+using DesignPlatform.Models;
 
 namespace DesignPlatform.ViewModels.CustomerHomeViewModels
 {
@@ -13,5 +14,6 @@ namespace DesignPlatform.ViewModels.CustomerHomeViewModels
         public IEnumerable<CustomerHomePackageViewModel> Packages { get; set; }
         public IEnumerable<AdminProjectPortfolioEditViewModel> Projects { get; set; }
         public IEnumerable<AdminReviewEditViewModel> Reviews { get; set; }
+
     }
 }

@@ -1,0 +1,152 @@
+﻿@model DesignPlatform.Areas.Employee.ViewModels.EmployeeProjectsViewModels.EmployeeProjectViewModel
+
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <div class="row">
+                <!-- Small table -->
+                <div class="col-md-12 my-4">
+                    <div class="card shadow">
+                        <div class="card-body">
+                            @* <div class="toolbar">
+                            <form class="form">
+                            <div class="form-row">
+                            <div class="form-group col-auto mr-auto">
+                            <label class="my-1 mr-2 sr-only" for="inlineFormCustomSelectPref1">Show</label>
+                            <select class="custom-select mr-sm-2" id="inlineFormCustomSelectPref1">
+                            <option value="">...</option>
+                            <option value="1">12</option>
+                            <option value="2" selected>32</option>
+                            <option value="3">64</option>
+                            <option value="3">128</option>
+                            </select>
+                            </div>
+                            <div class="form-group col-auto">
+                            <label for="search" class="sr-only">Search</label>
+                            <input type="text" class="form-control" id="search1" value="" placeholder="Search">
+                            </div>
+                            </div>
+                            </form>
+                            </div>*@
+
+                            <h1>Orders</h1>
+
+                            
+                            <!-- table -->
+                            <table class="table table-borderless table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Project id</th>
+                                        <th>Project status</th>
+                                        <th>Client name</th>
+                                        <th>Client Email</th>
+                                        <th>Client Phone</th>
+                                        <th>Client Address</th>
+                                        <th>Package </th>
+                                        <th>Package Price</th>
+                                        <th>Sub Packages</th>
+                                        <th>Sub Packages Price</th>
+                                        <th>Total Price</th>
+                                        <th>Designer</th>
+                                        <th>Design Status</th>
+                                        <th>Design notes</th>
+                                        <th>Notes</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var item in Model.Projects)
+                                    {
+                                        <tr>
+
+
+                                            <td>
+                                                @item.Id
+                                            </td>
+
+                                            <td>
+                                                @item.StatusText
+                                            </td>
+
+                                            <td>
+                                                @item.ClientName
+                                            </td>
+                                            <td>
+                                                @item.Email
+                                            </td>
+                                            <td>
+                                                @item.Phone
+                                            </td>
+                                            <td>
+                                                @item.Address
+                                            </td>
+
+                                            <td>
+                                                @item.PackageName
+                                            </td>
+
+                                            <td>
+                                                @item.Price
+                                            </td>
+
+                                            <td>
+                                                @item.SubPackagesAsString
+                                            </td>
+
+                                            <td>
+                                                @item.SubPackagePrice
+                                            </td>
+
+                                            <td>
+                                                @item.TotalPrice
+                                            </td>
+
+                                            <td>
+                                                @item.DesignerName
+                                            </td>
+                                            <td>
+                                                @item.DesignStatus
+                                            </td>
+
+                                            <td>
+                                                @item.DesignerNotes
+                                            </td>
+
+                                            <td>
+                                                @item.Notes
+                                            </td>
+
+                                            <td>
+                                                <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <span class="text-muted sr-only">Action</span>
+                                                </button>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="/Admin/Projects/Details/@item.Id">Details</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+
+
+
+                                </tbody>
+                            </table>
+                            @* <nav aria-label="Table Paging" class="mb-0 text-muted">
+                            <ul class="pagination justify-content-center mb-0">
+                            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                            </ul>
+                            </nav>*@
+                        </div>
+                    </div>
+                </div> <!-- customized table -->
+            </div> <!-- end section -->
+
+        </div> <!-- .col-12 -->
+    </div> <!-- .row -->
+</div>

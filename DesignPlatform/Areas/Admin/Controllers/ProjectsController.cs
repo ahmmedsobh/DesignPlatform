@@ -80,6 +80,118 @@ namespace DesignPlatform.Areas.Admin.Controllers
             return View(ViewModel);
         }
 
+        public async Task<IActionResult> Orders(EmployeeProjectParamsViewModel model)
+        {
+            IQueryable<Project> items = context.Projects.Where(i=> i.ConfirmPayment);
+
+            if (!string.IsNullOrEmpty(model.DesignerId))
+            {
+                items = items.Where(i => i.DesignerId == model.DesignerId);
+            }
+
+            var itemsToDisplay = await items.Select(i => new EmployeeProjectsDetailsViewModel()
+            {
+                Id = i.Id,
+                Phone = i.Phone,
+                AppointmentPhone = i.AppointmentPhone,
+                ScheduleDate = i.ScheduleDate,
+                Notes = i.Notes,
+                Status = i.Status,
+                StatusText = StatusHelper.StatusText(i.Status),
+                ClientId = i.ClientId,
+                ClientName = i.Client.FirstName + " " + i.Client.LastName,
+                FirstName = i.Client.FirstName,
+                LastName = i.Client.LastName,
+                DesignerName = i.Desinger != null ? i.Desinger.FirstName + " " + i.Desinger.LastName : "not found",
+                Email = i.Client.Email,
+                Address = i.Client.Address,
+                City = i.Client.City,
+                ZipCode = i.Client.ZipCode,
+                CountryId = i.Client.CountryId,
+                CountryName = i.Client.Country != null ? i.Client.Country.Name : "not found",
+                StateId = i.Client.StateId,
+                StateName = i.Client.State != null ? i.Client.State.Name : "not found",
+                SummaryNotes = i.SummaryNotes,
+                ScopeAndSizeOfProject = i.ScopeAndSizeOfProject,
+                AppointmentStatus = i.AppointmentStatus,
+                DesignStatus = i.DesignStatus,
+                DesignerNotes = i.DesignerNotes,
+                Price = i.Price,
+                Area = i.Area,
+                PackageName = i.ProjectPackages.Select(i => i.Package.Name).FirstOrDefault(),
+                SubPackagePrice = i.ProjectSubPackages.Select(i=> i.SubPackage.Price).Sum(),
+                SubPackagesAsString = SubPackagesAsString(i.Id,context),
+
+            }).ToListAsync();
+
+            var ViewModel = new EmployeeProjectViewModel();
+
+            ViewModel.Projects = itemsToDisplay;
+            ViewModel.Designers = await DesignersWithProjectsCount();
+
+
+            return View(ViewModel);
+        }
+
+        public async Task<IActionResult> OrdersNotConfirmed(EmployeeProjectParamsViewModel model)
+        {
+            IQueryable<Project> items = context.Projects.Where(i => !i.ConfirmPayment);
+
+            if (!string.IsNullOrEmpty(model.DesignerId))
+            {
+                items = items.Where(i => i.DesignerId == model.DesignerId);
+            }
+
+            var itemsToDisplay = await items.Select(i => new EmployeeProjectsDetailsViewModel()
+            {
+                Id = i.Id,
+                Phone = i.Phone,
+                AppointmentPhone = i.AppointmentPhone,
+                ScheduleDate = i.ScheduleDate,
+                Notes = i.Notes,
+                Status = i.Status,
+                StatusText = StatusHelper.StatusText(i.Status),
+                ClientId = i.ClientId,
+                ClientName = i.Client.FirstName + " " + i.Client.LastName,
+                FirstName = i.Client.FirstName,
+                LastName = i.Client.LastName,
+                DesignerName = i.Desinger != null ? i.Desinger.FirstName + " " + i.Desinger.LastName : "not found",
+                Email = i.Client.Email,
+                Address = i.Client.Address,
+                City = i.Client.City,
+                ZipCode = i.Client.ZipCode,
+                CountryId = i.Client.CountryId,
+                CountryName = i.Client.Country != null ? i.Client.Country.Name : "not found",
+                StateId = i.Client.StateId,
+                StateName = i.Client.State != null ? i.Client.State.Name : "not found",
+                SummaryNotes = i.SummaryNotes,
+                ScopeAndSizeOfProject = i.ScopeAndSizeOfProject,
+                AppointmentStatus = i.AppointmentStatus,
+                DesignStatus = i.DesignStatus,
+                DesignerNotes = i.DesignerNotes,
+                Price = i.Price,
+                Area = i.Area,
+                PackageName = i.ProjectPackages.Select(i => i.Package.Name).FirstOrDefault(),
+                SubPackagePrice = i.ProjectSubPackages.Select(i => i.SubPackage.Price).Sum(),
+                SubPackagesAsString = SubPackagesAsString(i.Id, context),
+
+            }).ToListAsync();
+
+            var ViewModel = new EmployeeProjectViewModel();
+
+            ViewModel.Projects = itemsToDisplay;
+            ViewModel.Designers = await DesignersWithProjectsCount();
+
+
+            return View(ViewModel);
+        }
+
+        static string SubPackagesAsString(int ProjectId,ApplicationDbContext context)
+        {
+            var SubPackages = context.ProjectSubPackages.Where(i => i.ProjectId == ProjectId).Select(i => i.SubPackage.Name).Aggregate((a, b) => $"{a},{b}");
+            return SubPackages;
+        }
+
         public async Task<IActionResult> Appointments()
         {
             var today = DateTime.Now.Date;
@@ -203,6 +315,11 @@ namespace DesignPlatform.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EmployeeProjectsDetailsViewModel model)
         {
+            if(ModelState.IsValid)
+            {
+
+            }
+
             var project = await context.Projects.Include(i => i.DesignDocs).FirstOrDefaultAsync(i => i.Id == model.Id);
 
             if (project == null)

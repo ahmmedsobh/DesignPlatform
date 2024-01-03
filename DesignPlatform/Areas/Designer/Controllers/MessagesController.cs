@@ -23,7 +23,7 @@ namespace DesignPlatform.Areas.Designer.Controllers
             this.currentUserService = currentUserService;
         }
 
-        public async Task<IActionResult> Index(string SelectedUser)
+        public async Task<IActionResult> Index(string SelectedUser,bool AllUsers = false)
         {
             var userId = currentUserService.UserId;
             var User = await context.Users.FirstOrDefaultAsync(i => i.Id == SelectedUser);
@@ -61,6 +61,7 @@ namespace DesignPlatform.Areas.Designer.Controllers
                 ReceiverId = User.Id,
                 NoSelectedUser = string.IsNullOrEmpty(User.FirstName),
                 SenderId = userId,
+                AllUsers = AllUsers,
             };
 
 

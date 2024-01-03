@@ -23,7 +23,7 @@ namespace DesignPlatform.Areas.Employee.Controllers
             this.currentUserService = currentUserService;
         }
 
-        public async Task<IActionResult> Index(string SelectedUser)
+        public async Task<IActionResult> Index(string SelectedUser,bool AllUsers = false)
         {
             var userId = currentUserService.UserId;
             var User = await context.Users.FirstOrDefaultAsync(i => i.Id == SelectedUser);
@@ -40,6 +40,7 @@ namespace DesignPlatform.Areas.Employee.Controllers
                 Date = i.Date.ToShortDateString(),
                 Time = i.Date.ToShortTimeString(),
                 IsMyMessage = i.SenderId == userId,
+                
             }).ToListAsync();
 
             var ClientRole = ((int)Roles.Client).ToString(); 
@@ -61,13 +62,14 @@ namespace DesignPlatform.Areas.Employee.Controllers
                 ReceiverId = User.Id,
                 NoSelectedUser = string.IsNullOrEmpty(User.FirstName),
                 SenderId = userId,
+                AllUsers = AllUsers,
             };
 
 
             return View(ViewModel);
         }
 
-        public async Task<IActionResult> IntChat(string SelectedUser)
+        public async Task<IActionResult> IntChat(string SelectedUser, bool AllUsers = false)
         {
             var userId = currentUserService.UserId;
             var User = await context.Users.FirstOrDefaultAsync(i => i.Id == SelectedUser);
@@ -105,6 +107,7 @@ namespace DesignPlatform.Areas.Employee.Controllers
                 ReceiverId = User.Id,
                 NoSelectedUser = string.IsNullOrEmpty(User.FirstName),
                 SenderId = userId,
+                AllUsers = AllUsers
             };
 
 

@@ -8,86 +8,142 @@
     <div class="container">
         <div class="row">
 
+            @if(Model.AllUsers)
+            {
+                <div class="col-lg-3">
+                    <div class="users">
 
-            <div class="col-lg-3">
-                <div class="users">
-
-                    @foreach (var item in Model.Users)
-                    {
-                        if (item.Selected)
+                        @foreach (var item in Model.Users)
                         {
-                            <a href="/Designer/Messages/Index?SelectedUser=@item.Id" class="user active">
-                                <div>
-                                    <h5>@item.Name</h5>
-                                    <p>@item.LastMessage</p>
-                                </div>
-                            </a>
-                        }
-                        else
-                        {
-                            <a href="/Designer/Messages/Index?SelectedUser=@item.Id" class="user">
-                                <div>
-                                    <h5>@item.Name</h5>
-                                    <p>@item.LastMessage</p>
-                                </div>
-                            </a>
-                        }
-
-                    }
-
-
-
-
-
-
-                </div>
-            </div>
-
-            <div class="col-lg-9">
-                <div class="messages-box">
-
-                    <div class="header">
-                        <h5>@Model.ReceiverName</h5>
-                    </div>
-
-                    <div class="messages">
-
-                        @foreach (var item in Model.Messages)
-                        {
-                            if (item.IsMyMessage)
+                            if (item.Selected)
                             {
-                                <div class="message sent-message">
-                                    <p>@item.Message</p>
-                                    <span>@item.Date @item.Time</span>
-                                </div>
+                                <a href="/Designer/Messages/Index?SelectedUser=@item.Id&AllUsers=true" class="user active">
+                                    <div>
+                                        <h5>@item.Name</h5>
+                                        <p>@item.LastMessage</p>
+                                    </div>
+                                </a>
                             }
                             else
                             {
-                                <div class="message recieve-message">
-                                    <p>@item.Message</p>
-                                    <span>@item.Date @item.Time</span>
+                                <a href="/Designer/Messages/Index?SelectedUser=@item.Id&AllUsers=true" class="user">
+                                    <div>
+                                        <h5>@item.Name</h5>
+                                        <p>@item.LastMessage</p>
+                                    </div>
+                                </a>
+                            }
+
+                        }
+
+
+
+
+
+
+                    </div>
+                </div>
+            }
+
+            @if(Model.AllUsers)
+            {
+                <div class="col-lg-9">
+                    <div class="messages-box">
+
+                        <div class="header">
+                            <h5>@Model.ReceiverName</h5>
+                        </div>
+
+                        <div class="messages">
+
+                            @foreach (var item in Model.Messages)
+                            {
+                                if (item.IsMyMessage)
+                                {
+                                    <div class="message sent-message">
+                                        <p>@item.Message</p>
+                                        <span>@item.Date @item.Time</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="message recieve-message">
+                                        <p>@item.Message</p>
+                                        <span>@item.Date @item.Time</span>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+
+                        <div class="footer">
+
+                            @if (!Model.NoSelectedUser)
+                            {
+                                <div class="send-message-box">
+                                    <input class="messageInpt">
+                                    <button type="button" class="sendBtn" data-receiverId="@Model.ReceiverId">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
                                 </div>
                             }
-                        }
+
+                        </div>
 
                     </div>
-
-                    <div class="footer">
-
-                        @if (!Model.NoSelectedUser)
-                        {
-                            <div class="send-message-box">
-                                <input class="messageInpt">
-                                <button type="button" class="sendBtn" data-receiverId="@Model.ReceiverId">
-                                    <i class="fa-solid fa-paper-plane"></i>
-                                </button>
-                            </div>
-                        }
-
-                    </div>
-
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="col-lg-12">
+                    <div class="messages-box">
+
+                        <div class="header">
+                            <h5>@Model.ReceiverName</h5>
+                        </div>
+
+                        <div class="messages">
+
+                            @foreach (var item in Model.Messages)
+                            {
+                                if (item.IsMyMessage)
+                                {
+                                    <div class="message sent-message">
+                                        <p>@item.Message</p>
+                                        <span>@item.Date @item.Time</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="message recieve-message">
+                                        <p>@item.Message</p>
+                                        <span>@item.Date @item.Time</span>
+                                    </div>
+                                }
+                            }
+
+                        </div>
+
+                        <div class="footer">
+
+                            @if (!Model.NoSelectedUser)
+                            {
+                                <div class="send-message-box">
+                                    <input class="messageInpt">
+                                    <button type="button" class="sendBtn" data-receiverId="@Model.ReceiverId">
+                                        <i class="fa-solid fa-paper-plane"></i>
+                                    </button>
+                                </div>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+
+            
 
         </div>
     </div>

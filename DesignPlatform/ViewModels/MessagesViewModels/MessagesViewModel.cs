@@ -8,5 +8,6 @@
         public string ReceiverName { get; set; }
         public bool NoSelectedUser { get; set; }
         public string SenderId { get; set; }
+        public bool AllUsers { get; set; }
     }
 }
